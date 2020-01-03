@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
     Collapse,
-    Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    NavbarText
+    NavLink
 } from 'reactstrap';
+import Navbar from 'react-bootstrap/Navbar'
 import * as ROUTES from '../../constants/routes';
 
 
@@ -20,8 +18,16 @@ const Navigation = (props) => {
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Grant Watson</NavbarBrand>
+            <Navbar bg="dark" variant="dark" expand="lg">
+                <Navbar.Brand href="/">
+                    <img
+                        alt=""
+                        src="/logo.png"
+                        width="40"
+                        height="50"
+                        className="d-inline-block align-top"
+                    />{' '}
+                </Navbar.Brand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
