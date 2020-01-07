@@ -63,6 +63,10 @@
   padding: 50px;
 }
 
+.navbar .bg-dark{
+  border-bottom: solid 5px green;
+}
+
 .main-container {
   display: flex;
   flex-direction: row;
