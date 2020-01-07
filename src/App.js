@@ -1,16 +1,16 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import HomePage from './Views/Home';
-import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import PortolioPage from './Views/Portfolio';
 import BlogPage from './Views/Blog';
 import ServicePage from './Views/Services';
 import ExperiencePage from './Views/Experience';
+import TopNav from './components/Navigation/TopNav';
+import StickyFooter from 'react-sticky-footer';
 
 function Copyright() {
   return (
@@ -28,8 +28,8 @@ function Copyright() {
 export default function App() {
   return (
     <Router>
-      <Navigation />
-      <Container maxWidth="md">
+      <TopNav />
+      <div className="container-body">
 
 
         <Box my={5}>
@@ -40,10 +40,22 @@ export default function App() {
             <Route exact path={ROUTES.SERVICES} component={ServicePage} />
             <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
           </div>
-          <Copyright />
         </Box>
 
-      </Container>
+      </div>
+      <StickyFooter
+        bottomThreshold={50}
+        normalStyles={{
+          backgroundColor: "#999999",
+          padding: "2rem"
+        }}
+        stickyStyles={{
+          backgroundColor: "rgba(255,255,255,.8)",
+          padding: "2rem"
+        }}
+      >
+        <Copyright />
+      </StickyFooter>
     </Router>
   );
 }
