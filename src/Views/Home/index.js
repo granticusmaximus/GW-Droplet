@@ -8,6 +8,7 @@ const HomePage = () => (
     </Typography>
 
     <div className="main-content-container">
+      <div className="ain-content-container">Hello!</div>
       <p>Hello everyone, and welcome!</p>
     </div>
   </div>
