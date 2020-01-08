@@ -1,44 +1,57 @@
-import React from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import React from 'react';
+import styles from './style.module.scss';
+import Icon from '@mdi/react';
+import { mdiFacebookBox, mdiTwitterBox, mdiInstagram } from '@mdi/js';
 
-const Footer = () => {
-  return (
-    <MDBFooter color="blue" className="font-small pt-4 mt-4">
-      <MDBContainer fluid className="text-center text-md-left">
-        <MDBRow>
-          <MDBCol md="6">
-            <h5 className="title">Footer Content</h5>
-            <p>
-              Here you can use rows and columns here to organize your footer
-              content.
-            </p>
-          </MDBCol>
-          <MDBCol md="6">
-            <h5 className="title">Links</h5>
-            <ul>
-              <li className="list-unstyled">
-                <a href="#!">Link 1</a>
-              </li>
-              <li className="list-unstyled">
-                <a href="#!">Link 2</a>
-              </li>
-              <li className="list-unstyled">
-                <a href="#!">Link 3</a>
-              </li>
-              <li className="list-unstyled">
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-      <div className="footer-copyright text-center py-3">
-        <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Made with Love By: <a href="https://www.grantwatson.app"> Grant Watson </a>
-        </MDBContainer>
-      </div>
-    </MDBFooter>
-  );
-}
+const Footer = () => (
+    <div className={styles.footer}>
+        <div className={styles.inner}>
+            <div className={styles.bottom}>
+                <div className="row">
+                    <div className="col-sm-6">
+                        <p>
+                            <strong>Connect with me!</strong>
+                        </p>
+                        <a href="https://fb.me/GWSoftware" target="_blank">
+                            <Icon path={mdiFacebookBox}
+                                title="Facebook Page"
+                                size={1}
+                                color="black" />
+                        </a>
+                        <a href="https://twitter.com/GrantMaxly" target="_blank">
+                            <Icon path={mdiTwitterBox}
+                                title="Twitter Page"
+                                size={1}
+                                color="black" />
+                        </a>
+                        <a href="#" target="_blank">
+                            <Icon path={mdiInstagram}
+                                title="Instagram Page"
+                                size={1}
+                                color="black" />
+                        </a>
+                    </div>
+                    <div className="col-sm-6">
+                        <div className={styles.copyright}>
+                            <img
+                                src="./logo.png"
+                                rel="noopener noreferrer"
+                                alt="Grant Watson Software"
+                            />
+                            <span>
+                                © 2019{' '}
+                                <a href="http://grantwatson.app" target="_blank" rel="noopener noreferrer">
+                                    Grant Watson
+                </a>
+                                <br />
+                                All rights reserved
+              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+)
 
-export default Footer;
+export default Footer

@@ -3,9 +3,6 @@ import Typography from '@material-ui/core/Typography';
 
 const HomePage = () => (
   <div className="container">
-    <Typography variant="h4" component="h1" gutterBottom>
-      Welcome! I am Grant Watson
-    </Typography>
     <div className="row">
       <div className="col-md-4">
         <div className="card card-1">
@@ -33,6 +30,11 @@ const HomePage = () => (
           </ul>
         </div>
       </div>
+
+      <hr />
+      <Typography variant="h4" component="h1" gutterBottom>
+        Welcome! I am Grant Watson
+      </Typography>
     </div>
 
 
