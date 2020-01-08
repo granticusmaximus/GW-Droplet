@@ -11,6 +11,7 @@ import ServicePage from './Views/Services';
 import ExperiencePage from './Views/Experience';
 import TopNav from './components/Navigation/TopNav';
 import StickyFooter from 'react-sticky-footer';
+import Footer from './components/Footer/Footer';
 
 function Copyright() {
   return (
@@ -43,19 +44,10 @@ export default function App() {
         </Box>
 
       </div>
-      <StickyFooter
-        bottomThreshold={50}
-        normalStyles={{
-          backgroundColor: "#999999",
-          padding: "2rem"
-        }}
-        stickyStyles={{
-          backgroundColor: "rgba(255,255,255,.8)",
-          padding: "2rem"
-        }}
-      >
-        <Copyright />
-      </StickyFooter>
+      
+      
+
+      <Footer />
     </Router>
   );
 }
