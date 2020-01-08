@@ -35,7 +35,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "fire": "firebase deploy"
+    "fire": "firebase deploy",
+    "strut": "firebase init"
   },
   "eslintConfig": {
     "extends": "react-app"
