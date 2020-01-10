@@ -1,4 +1,4 @@
-@import '@/assets/styles/mixins.scss';
+@import "../../../assets/styles/mixins.scss";
 
 .chat {
   overflow-x: hidden;
@@ -28,7 +28,7 @@
     width: 0;
     height: 0;
     display: block;
-    content: '';
+    content: "";
     border: rem(7) solid transparent;
     border-right-color: $gray-lighten-more;
   }
