@@ -1,20 +1,7 @@
 import React, { Component } from "react";
-import SkillBar from "react-skillbars";
 
 class HomePage extends Component {
   render() {
-    const skills = [
-      { type: "C#", level: 85 },
-      { type: "ASP.NET", level: 85 },
-      { type: "ReactJS", level: 88 },
-      { type: "Java", level: 75 },
-      { type: "Python", level: 70 },
-      { type: "PHP", level: 80 },
-      { type: "Firebase", level: 56 },
-      { type: "MySQL", level: 65 },
-      { type: "SQL Server", level: 68 },
-      { type: "Javascript", level: 75 }
-    ];
     return (
       <div className="container">
         <div className="row">
@@ -41,10 +28,16 @@ class HomePage extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="card card-3">
-              <h5 className="mb-3 text-black">
-                <strong>Skills</strong>
-              </h5>
-              <SkillBar skills={skills} />
+              <h4>A little more about me</h4>
+              <p>
+                I have my most fun in the developmental realm working with ReactJS and C#. With these two items, 
+                it seems more problems can find a solution in these languages. I am currently working with the 
+                Department of Commerce on a few open source applications.
+              </p>
+              <p>
+                Outside of code, I enjoy creating and supporting others that in other ways. From working on my blog,
+                to finding new music, or reading a new (to me) book, there is so much in the realm of creation and arts.
+              </p>
             </div>
           </div>
         </div>

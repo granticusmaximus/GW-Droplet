@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 import PortolioPage from "./Views/Portfolio";
 import BlogPage from "./Views/Blog";
-import ServicePage from "./Views/Services";
 import ExperiencePage from "./Views/Experience";
 import TopNav from "./components/Navigation/TopNav";
 import Footer from "./components/Footer/Footer";
@@ -22,7 +21,6 @@ export default function App() {
             <Route exact path={ROUTES.HOME} component={HomePage} />
             <Route exact path={ROUTES.PORTFOLIO} component={PortolioPage} />
             <Route exact path={ROUTES.BLOG} component={BlogPage} />
-            <Route exact path={ROUTES.SERVICES} component={ServicePage} />
             <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
           </div>
         </Box>

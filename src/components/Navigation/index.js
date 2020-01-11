@@ -38,9 +38,6 @@ const Navigation = (props) => {
                             <NavLink><Link to={ROUTES.PORTFOLIO}>Portfolio</Link></NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink><Link to={ROUTES.SERVICES}>Services</Link></NavLink>
-                        </NavItem>
-                        <NavItem>
                             <NavLink><Link to={ROUTES.EXPERIENCE}>Experience</Link></NavLink>
                         </NavItem>
                         <NavItem>
