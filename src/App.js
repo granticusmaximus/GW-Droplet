@@ -1,7 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Link from "@material-ui/core/Link";
 import HomePage from "./Views/Home";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
@@ -10,6 +8,7 @@ import BlogPage from "./Views/Blog";
 import ExperiencePage from "./Views/Experience";
 import TopNav from "./components/Navigation/TopNav";
 import Footer from "./components/Footer/Footer";
+import MyResume from "../src/Views/Experience/MyResume";
 
 export default function App() {
   return (
@@ -22,6 +21,7 @@ export default function App() {
             <Route exact path={ROUTES.PORTFOLIO} component={PortolioPage} />
             <Route exact path={ROUTES.BLOG} component={BlogPage} />
             <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
+            <Route exact path={ROUTES.RESUME} component={MyResume} />
           </div>
         </Box>
       </div>

@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 import Typography from '@material-ui/core/Typography';
 import SkillBar from "react-skillbars";
+import Timeline from "./Timeline";
+import { Button } from "reactstrap";
+import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
+
 
 class ExperiencePage extends Component {
   render() {
+    const colors = {
+      bar: 'linear-gradient(to right, #00c6ff, #0072ff)',
+      title: {
+        text: '#fff',
+        background: '#ff3300'
+      }
+    }
     const skills = [
       { type: "C#", level: 85 },
       { type: "ASP.NET", level: 85 },
@@ -17,20 +29,33 @@ class ExperiencePage extends Component {
       { type: "Javascript", level: 75 }
     ];
     return (
+      
       <div className="container">
-        <Typography variant="h4" component="h1" gutterBottom>
-          Experience Page
+        <Typography variant="h2" component="h1" gutterBottom>
+          Current Skills
         </Typography>
         <div className="row">
           <div className="col-md-12">
-            <div className="card card-3">
-              <h5 className="mb-3 text-black">
-                <strong>Skills</strong>
-              </h5>
-              <SkillBar skills={skills} />
+            <div className="card">
+              <SkillBar skills={skills} colors={colors} />
             </div>
           </div>
         </div>
+
+        <hr />
+
+        <Typography variant="h2" component="h1" gutterBottom>
+          Work Experience
+        </Typography>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <Timeline />
+              <Button outline color="primary"><Link to={ROUTES.RESUME}>View Full Resume</Link></Button>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }
