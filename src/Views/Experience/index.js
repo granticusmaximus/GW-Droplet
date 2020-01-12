@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Typography from '@material-ui/core/Typography';
 import SkillBar from "react-skillbars";
+import Timeline from "./Timeline";
+import { Button } from "reactstrap";
+import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
+
 
 class ExperiencePage extends Component {
   render() {
@@ -45,7 +50,8 @@ class ExperiencePage extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="card">
-              
+              <Timeline />
+              <Button outline color="primary"><Link to={ROUTES.RESUME}>View Full Resume</Link></Button>
             </div>
           </div>
         </div>
