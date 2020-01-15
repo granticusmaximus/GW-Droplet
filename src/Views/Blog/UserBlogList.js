@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import Firebase from '../../components/Firebase/firebase';
 
 class BlogList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div class="container">
@@ -17,6 +13,7 @@ class BlogList extends Component {
             </h3>
           </div>
           <div class="panel-body">
+            <h4><Link to="/create">Add Board</Link></h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -27,9 +24,9 @@ class BlogList extends Component {
               </thead>
               <tbody>
                   <tr>
-                    <td>Blah</td>
-                    <td>Blah</td>
-                    <td>Blah</td>
+                    <td>Key</td>
+                    <td>Whatever</td>
+                    <td>Author</td>
                   </tr>
               </tbody>
             </table>

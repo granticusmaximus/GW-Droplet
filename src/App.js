@@ -13,27 +13,34 @@ import SignInPage from "./Views/Account/SignIn";
 import SignUpPage from "./Views/Account/SIgnUp";
 import PasswordForgetPage from "./Views/Account/PasswordForget";
 import Admin from "./Views/Account/Admin";
+import { withAuthentication } from './components/Session';
+import Create from "./Views/Blog/CreatePost";
+import Show from "./Views/Blog/ShowBlog";
+import Edit from "./Views/Blog/Edit";
 
-export default function App() {
-  return (
-    <Router>
-      <TopNav />
-      <div className="container-body">
-        <Box my={5}>
-          <div>
-            <Route exact path={ROUTES.HOME} component={HomePage} />
-            <Route exact path={ROUTES.PORTFOLIO} component={PortolioPage} />
-            <Route exact path={ROUTES.BLOG} component={BlogPage} />
-            <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
-            <Route exact path={ROUTES.RESUME} component={MyResume} />
-            <Route exact path={ROUTES.LOGIN} component={SignInPage} />
-            <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
-            <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-            <Route exact path={ROUTES.ADMIN} component={Admin} />
-          </div>
-        </Box>
-      </div>
-      <Footer />
-    </Router>
-  );
-}
+const App = () => (
+  <Router>
+    <TopNav />
+    <div className="container-body">
+      <Box my={5}>
+        <div>
+          <Route exact path={ROUTES.HOME} component={HomePage} />
+          <Route exact path={ROUTES.PORTFOLIO} component={PortolioPage} />
+          <Route exact path={ROUTES.BLOG} component={BlogPage} />
+          <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
+          <Route exact path={ROUTES.RESUME} component={MyResume} />
+          <Route exact path={ROUTES.LOGIN} component={SignInPage} />
+          <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route exact path={ROUTES.ADMIN} component={Admin} />
+          <Route exact path={ROUTES.EDIT} component={Edit} />
+          <Route exact path={ROUTES.CREATE} component={Create} />
+          <Route exact path={ROUTES.SHOW} component={Show} />
+        </div>
+      </Box>
+    </div>
+    <Footer />
+  </Router>
+);
+
+export default withAuthentication(App);
