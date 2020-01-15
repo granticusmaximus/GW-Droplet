@@ -1,8 +1,9 @@
 import React from 'react';
+import BlogCreation from '../../Blog/BlogCreation';
 
 const Admin = () => (
   <div>
-    <h1>Admin</h1>
+    <BlogCreation />
   </div>
 );
 

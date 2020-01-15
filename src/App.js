@@ -9,6 +9,10 @@ import ExperiencePage from "./Views/Experience";
 import TopNav from "./components/Navigation/TopNav";
 import Footer from "./components/Footer/Footer";
 import MyResume from "../src/Views/Experience/MyResume";
+import SignInPage from "./Views/Account/SignIn";
+import SignUpPage from "./Views/Account/SIgnUp";
+import PasswordForgetPage from "./Views/Account/PasswordForget";
+import Admin from "./Views/Account/Admin";
 
 export default function App() {
   return (
@@ -22,10 +26,13 @@ export default function App() {
             <Route exact path={ROUTES.BLOG} component={BlogPage} />
             <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
             <Route exact path={ROUTES.RESUME} component={MyResume} />
+            <Route exact path={ROUTES.LOGIN} component={SignInPage} />
+            <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+            <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+            <Route exact path={ROUTES.ADMIN} component={Admin} />
           </div>
         </Box>
       </div>
-
       <Footer />
     </Router>
   );
