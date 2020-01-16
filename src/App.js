@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import HomePage from "./Views/Home";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 import PortolioPage from "./Views/Portfolio";
 import BlogPage from "./Views/Blog";
@@ -14,12 +14,12 @@ import SignUpPage from "./Views/Account/SIgnUp";
 import PasswordForgetPage from "./Views/Account/PasswordForget";
 import Admin from "./Views/Account/Admin";
 import { withAuthentication } from './components/Session';
-import Create from "./Views/Blog/CreatePost";
-import Show from "./Views/Blog/ShowBlog";
-import Edit from "./Views/Blog/Edit";
+import ScrollToTop from 'react-router-scroll-top';
+import NewPost from "./Views/Blog/NewPost";
 
 const App = () => (
-  <Router>
+  <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+          <ScrollToTop>
     <TopNav />
     <div className="container-body">
       <Box my={5}>
@@ -33,14 +33,13 @@ const App = () => (
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
-          <Route exact path={ROUTES.EDIT} component={Edit} />
-          <Route exact path={ROUTES.CREATE} component={Create} />
-          <Route exact path={ROUTES.SHOW} component={Show} />
+          <Route exact path={ROUTES.NEW_POST} component={NewPost} />
         </div>
       </Box>
     </div>
     <Footer />
-  </Router>
+    </ScrollToTop>
+  </BrowserRouter>
 );
 
 export default withAuthentication(App);
