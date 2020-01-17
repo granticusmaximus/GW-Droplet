@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-const file = '~/src/Views/Experience/gwresume.docx'
-const type = 'docx'
-
 class MyResume extends Component {
   render() {
     return (

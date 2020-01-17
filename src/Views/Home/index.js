@@ -28,7 +28,7 @@ class HomePage extends Component {
               <h4>Top Notch Dev</h4>
               <p>
                 As per the arena, I love learning the newest languages, trends,
-                and features that the provide the Internet it's glory.
+                and features that provide the Internet in all it's glory.
               </p>
             </div>
           </div>
