@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import data from './data';
 import Project from './Project';
+import Info from './Info';
 
 class PortolioPage extends Component {
   state = {}
@@ -16,6 +17,15 @@ class PortolioPage extends Component {
               <Typography variant="h4" component="h1" gutterBottom>
                 My Current Work
               </Typography>
+              <center>
+                <div className='work-content'>
+                {data.info.map((info) => (
+                <Info key={info.name}
+                  abouttext={info.abouttext}
+                ></Info>
+              ))}
+                </div>
+              </center>
             </Fade>
           </h1>
           <center>
