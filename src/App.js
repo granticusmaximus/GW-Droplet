@@ -15,7 +15,6 @@ import PasswordForgetPage from "./Views/Account/PasswordForget";
 import Admin from "./Views/Account/Admin";
 import { withAuthentication } from './components/Session';
 import ScrollToTop from 'react-router-scroll-top';
-import NewPost from "./Views/Blog/NewPost";
 
 const App = () => (
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
@@ -33,7 +32,6 @@ const App = () => (
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
-          <Route exact path={ROUTES.NEW_POST} component={NewPost} />
         </div>
       </Box>
     </div>

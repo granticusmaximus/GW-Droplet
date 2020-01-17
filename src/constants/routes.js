@@ -8,4 +8,4 @@ export const LOGIN = '/login';
 export const LOGOUT = '/logout';
 export const SIGN_UP = '/sign-up';
 export const PASSWORD_FORGET = '/forgotten-password';
-export const NEW_POST = '/new-post';
+export const SINGLE_POST = '/post/:id';
