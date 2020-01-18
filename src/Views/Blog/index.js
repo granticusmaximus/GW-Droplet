@@ -11,16 +11,6 @@ class BlogPage extends Component {
       posts: []
     }
   }
-
-  async componentDidMount() {
-    let response = await fetch("https://gw-blogbackend.herokuapp.com/posts");
-    if (!response.ok) {
-      return
-    }
-
-    let posts = await response.json()
-    this.setState({ loading: false, posts: posts })
-  }
   render() {
     if (!this.state.loading) {
       return (
