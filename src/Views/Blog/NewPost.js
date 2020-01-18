@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor';
@@ -17,7 +17,6 @@ class NewPost extends Component {
             editing: false,
             error: null,
         };
-        this.handleChange = this._handleChange.bind(this)
     }
     componentDidMount() {
         // console.log(firebase)

@@ -7,6 +7,8 @@
   pointer-events: none;
 }
 
+
+
 .bg-light {
   background: #1B242F;
   border-bottom: 3px solid #04C2C9;
@@ -15,6 +17,7 @@
   display: flex;
   height: 50px;
   width: 100%;
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,.14);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -85,6 +88,29 @@
   width: 94%;
   background: #fff;
   z-index: 100;
+}
+
+.loginBox {
+  width: 450px;
+  height: auto;
+  padding: 35px;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid grey;
+  background-image: linear-gradient(to right, #00c6ff, #0072ff);
+  box-shadow: 0 7px 15px 0 rgba(0,0,0,.14);;
+}
+
+.pageHeader {
+  border-radius: 5px;
+  padding: 10px;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 150%;
+  border: 1px solid grey;
+  background-color: #0072ff;
 }
 
 .container-body {
