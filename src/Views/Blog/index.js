@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
 
 class BlogPage extends Component {
   constructor(props) {
@@ -11,39 +9,14 @@ class BlogPage extends Component {
       posts: []
     }
   }
-
-  async componentDidMount() {
-    let response = await fetch("https://gw-blogbackend.herokuapp.com/posts");
-    if (!response.ok) {
-      return
-    }
-
-    let posts = await response.json()
-    this.setState({ loading: false, posts: posts })
-  }
   render() {
-    if (!this.state.loading) {
-      return (
-        <div className="ProductList">
-          <h2 className="ProductList-title">Available Products ({this.state.posts.length})</h2>
-          <div className="ProductList-container">
-            {this.state.posts.map((posts, index) => {
-              return (
-                <div className="ProductList-product" key={posts.id}>
-                  <Link to={`/blog/${posts.id}`}>
-                    <h3>{posts.title}</h3>
-                    <img src={`https://gw-blogbackend.herokuapp.com/${posts.image.url}`} alt={posts.title} />
-                    <div>{posts.description}</div>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      );
-    }
-
-    return (<h2 className="ProductList-title">Waiting for API...</h2>);
+    return (
+      <div className="container-body">
+        <h2>(#) of Posts</h2>
+        <hr />
+        <p>Post Cards will go here</p>
+      </div>
+    );
   }
 }
 

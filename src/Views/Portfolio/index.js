@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import data from './data';
 import Project from './Project';
@@ -14,16 +13,16 @@ class PortolioPage extends Component {
         <div>
           <h1 className='heading'>
             <Fade bottom cascade>
-              <Typography variant="h4" component="h1" gutterBottom>
-                My Current Work
-              </Typography>
+              <div className="pageHeader">
+                Current Works
+             </div>
               <center>
                 <div className='work-content'>
-                {data.info.map((info) => (
-                <Info key={info.name}
-                  abouttext={info.abouttext}
-                ></Info>
-              ))}
+                  {data.info.map((info) => (
+                    <Info key={info.name}
+                      abouttext={info.abouttext}
+                    ></Info>
+                  ))}
                 </div>
               </center>
             </Fade>

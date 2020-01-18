@@ -9,3 +9,4 @@ export const LOGOUT = '/logout';
 export const SIGN_UP = '/sign-up';
 export const PASSWORD_FORGET = '/forgotten-password';
 export const SINGLE_POST = '/post/:id';
+export const NEW_POST = '/newpost';

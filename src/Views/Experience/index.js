@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Typography from '@material-ui/core/Typography';
 import SkillBar from "react-skillbars";
 import Timeline from "./Timeline";
 import { Button } from "reactstrap";
+import Fade from 'react-reveal/Fade';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom';
 
@@ -29,11 +29,11 @@ class ExperiencePage extends Component {
       { type: "Javascript", level: 75 }
     ];
     return (
-      
+      <Fade bottom cascade>
       <div className="container">
-        <Typography variant="h2" component="h1" gutterBottom>
+        <div className="pageHeader">
           Current Skills
-        </Typography>
+        </div>
         <div className="row">
           <div className="col-md-12">
             <div className="card">
@@ -44,9 +44,9 @@ class ExperiencePage extends Component {
 
         <hr />
 
-        <Typography variant="h2" component="h1" gutterBottom>
+        <div className="pageHeader">
           Work Experience
-        </Typography>
+          </div>
         <div className="row">
           <div className="col-md-12">
             <div className="card">
@@ -57,6 +57,7 @@ class ExperiencePage extends Component {
         </div>
 
       </div>
+      </Fade>
     );
   }
 }
