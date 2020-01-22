@@ -1,6 +1,6 @@
 {
   "name": "grant-watson-droplet-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.8.3",
@@ -26,7 +26,6 @@
     "dva": "^2.4.1",
     "enquire-js": "^0.2.1",
     "firebase": "^7.7.0",
-    "firebase-admin": "^8.9.1",
     "html-to-draftjs": "^1.5.0",
     "lodash": "^4.17.14",
     "mdbreact": "^4.24.0",
@@ -79,8 +78,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "fire": "firebase deploy",
     "strut": "firebase init"
   },
@@ -98,8 +95,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^2.2.0"
   }
 }

@@ -9,13 +9,14 @@ import ExperiencePage from "./Views/Experience";
 import TopNav from "./components/Navigation/TopNav";
 import Footer from "./components/Footer/Footer";
 import MyResume from "../src/Views/Experience/MyResume";
-import SignInPage from "./Views/Account/SignIn";
-import SignUpPage from "./Views/Account/SIgnUp";
-import PasswordForgetPage from "./Views/Account/PasswordForget";
+import SignIn from "./Views/Account/Auth/SignIn";
+import SignUp from "./Views/Account/Auth/SignUp";
 import Admin from "./Views/Account/Admin";
 import { withAuthentication } from './components/Session';
 import ScrollToTop from 'react-router-scroll-top';
 import NewPost from "./Views/Blog/NewPost";
+import Data from "./Views/Data/Data";
+import Page from "./components/Auth/Page";
 
 const App = () => (
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
@@ -29,11 +30,12 @@ const App = () => (
           <Route exact path={ROUTES.BLOG} component={BlogPage} />
           <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
           <Route exact path={ROUTES.RESUME} component={MyResume} />
-          <Route exact path={ROUTES.LOGIN} component={SignInPage} />
-          <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
-          <Route exact path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route exact path={ROUTES.LOGIN} component={Page} />
+          <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
+          <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
           <Route exact path={ROUTES.NEW_POST} component={NewPost} />
+          <Route exact path={ROUTES.CARDS} component={Data} />
         </div>
       </Box>
     </div>
