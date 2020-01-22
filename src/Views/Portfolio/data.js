@@ -39,7 +39,7 @@ export default
         projects: [
             {
                 id: 1,//DO NOT CHANGE THIS (Please)😅
-                title: 'Project One', //Project Title - Add Your Project Title Here
+                title: 'Project 1', //Project Title - Add Your Project Title Here
                 service: 'UI/UX Design built while at Wayne Reaves Software', // Add Your Service Type Here
                 //Project Image - Add Your Project Image Here
                 imageSrc: "https://i.imgur.com/OTzkUz8.jpg",
@@ -48,18 +48,54 @@ export default
             },
             {
                 id: 2,//DO NOT CHANGE THIS (Please)😅
-                title: 'Project Two',
+                title: 'Project 2',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/JBxFDsN.jpg",
                 url: '#',
             },
             {
                 id: 3,//DO NOT CHANGE THIS (Please)😅
-                title: 'Project Three',
+                title: 'Project 3',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/2hTZSIc.jpg",
                 url: '#'
+            },
+            {
+                id: 4,//DO NOT CHANGE THIS (Please)😅
+                title: 'Project 4',
+                service: 'UI/UX Design built while at Wayne Reaves Software',
+                imageSrc: "https://i.imgur.com/Vp6K3ct.jpg",
+                url: '#'
+            },
+            {
+                id: 5,//DO NOT CHANGE THIS (Please)😅
+                title: 'Project 5',
+                service: 'UI/UX Design built while at Wayne Reaves Software',
+                imageSrc: "https://i.imgur.com/4mDSoc0.jpg",
+                url: '#'
+            },
+            {
+                id: 6,//DO NOT CHANGE THIS (Please)😅
+                title: 'Project 6',
+                service: 'UI/UX Design built while at Wayne Reaves Software',
+                imageSrc: "https://i.imgur.com/zebpYzu.jpg",
+                url: '#'
+            },
+            {
+                id: 7,//DO NOT CHANGE THIS (Please)😅
+                title: 'Project 7',
+                service: 'A CRM app built in ASP.NET',
+                imageSrc: "https://i.imgur.com/DYk1Rqq.jpg",
+                url: '#'
+            },
+            {
+                id: 8,//DO NOT CHANGE THIS (Please)😅
+                title: 'Project 8',
+                service: 'A WordPress Theme built for Global U',
+                imageSrc: "https://i.imgur.com/tZwInCZ.jpg",
+                url: '#'
             }
+
 
             /*
             If You Want To Add More Project just Copy and Paste This At The End (Update the id Respectively)

@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-import fire from "../../components/Firebase/firebase.js";
+import { withFirebase } from '../../components/Firebase';
 
 
 class NewPost extends Component {
@@ -13,61 +13,63 @@ class NewPost extends Component {
         this.state = {
             postTitle: '',
             description: '',
+            loading: false,
             postLists: [],
             editing: false,
             error: null,
         };
     }
     componentDidMount() {
-        // console.log(firebase)
-        const myPost = fire.database().ref("posts/");
-        // console.log(myPost)
-        myPost.on("value", snapshot => {
-            const myPostFromDatabase = snapshot.val();
-            if (myPostFromDatabase === null) {
-                console.log("Posts at our firebase is null");
-            } else {
-                const lists = Object.keys(snapshot.val()).map(key => {
-                    return {
-                        key: key,
-                        postTitle: myPostFromDatabase[key].postTitle,
-                        description: myPostFromDatabase[key].description
-                    };
-                });
-                this.setState({
-                    postLists: lists
-                });
-            }
-        });
+        this.onListenForPosts();
     }
 
-    _savePost = e => {
-        if (this.state.postTitle === "") {
-            alert("Post title cannot be empty");
-        } else {
-            const newPostKey = fire
-                .database()
-                .ref("posts/")
-                .push().key;
+    onListenForPosts = () => {
+        this.setState({ loading: true });
 
-            fire
-                .database()
-                .ref("posts/")
-                .update({
-                    [newPostKey]: {
-                        postTitle: this.state.postTitle,
-                        description: this.state.description
-                    }
-                });
-            this.setState({
-                postTitle: "",
-                description: ""
+        this.props.firebase
+            .posts()
+            .orderByChild('createdAt')
+            .limitToLast(this.state.limit)
+            .on('value', snapshot => {
+                const postObject = snapshot.val();
+
+                if (postObject) {
+                    const postList = Object.keys(postObject).map(key => ({
+                        ...postObject[key],
+                        uid: key,
+                    }));
+
+                    this.setState({
+                        post: postList,
+                        loading: false,
+                    });
+                } else {
+                    this.setState({ posts: null, loading: false });
+                }
             });
-        }
     };
 
-    handleChange(value) {
-        this.setState({ text: value })
+    componentWillUnmount() {
+        this.props.firebase.posts().off();
+    }
+
+    onChangeText = event => {
+        this.setState({ text: event.target.value });
+    };
+
+    savePost = (event) => {
+        this.props.firebase.posts().push({
+            description: this.state.description,
+            postTitle: this.state.postTitle,
+            createdAt: this.props.firebase.serverValue.TIMESTAMP,
+        });
+
+        this.setState({
+            description: '',
+            postTitle: ''
+        });
+
+        event.preventDefault();
     };
 
     _handleChange = event => {
@@ -76,20 +78,25 @@ class NewPost extends Component {
 
 
     render() {
+        const { postTitle, description, loading } = this.state;
         return (
             <div className="container-body">
                 <div className="row">
                     <h2>Add New Post</h2>
                 </div>
                 <hr />
-                <Form>
+                <Form
+                    onSubmit={event =>
+                        this.savePost(event)
+                    }
+                >
                     <FormGroup>
                         <div className="col-md-6">
                             <h3>Enter Title</h3>
                             <Input
                                 type="text"
                                 name="postTitle"
-                                value={this.state.title}
+                                value={postTitle}
                                 onChange={this._handleChange}
                                 id="postTitle"
                                 placeholder="Think of an awesome title!"
@@ -101,7 +108,7 @@ class NewPost extends Component {
                             <Editor
                                 type="text"
                                 name="description"
-                                value={this.state.description}
+                                value={description}
                                 onChange={this._handleChange}
                                 id="description"
                                 placeholder="Think of something awesome to write!"
@@ -109,12 +116,11 @@ class NewPost extends Component {
                         </div>
                     </div>
                     <hr />
-                    <Button outline color="success">Save Post</Button>{' '}
+                    <Button outline color="success" type="submit">Save Post</Button>{' '}
                     <Button outline color="danger"><Link to={ROUTES.ADMIN}>Cancel Post</Link></Button>
                 </Form>
             </div>
         )
     }
 }
-
-export default NewPost;
+export default withFirebase(NewPost);
