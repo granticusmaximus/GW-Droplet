@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import 'react-quill/dist/quill.snow.css';
-import Editor from './Editor';
 import fire from '../Firebase/fire';
 import * as ROUTES from '../../constants/routes';
 
