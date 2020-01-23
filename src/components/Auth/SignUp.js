@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import fire from "../Firebase/fire";
 import { Form, FormGroup, Input, Button } from "reactstrap";
-import fire from '../../Firebase';
 
 class SignUp extends Component {
   constructor(props) {

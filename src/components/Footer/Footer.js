@@ -33,13 +33,9 @@ const Footer = () => (
                     </div>
                     <div className="col-sm-6">
                         <div className={styles.copyright}>
-                            <img
-                                src="./logo.png"
-                                rel="noopener noreferrer"
-                                alt="Grant Watson Software"
-                            />
+                            
                             <span>
-                                © 2019{' '}
+                                © 2020{' '}
                                 <a href="http://grantwatson.app" target="_blank" rel="noopener noreferrer">
                                     Grant Watson
                 </a>

@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor';
-import { Link } from 'react-router-dom';
+import fire from '../Firebase/fire';
 import * as ROUTES from '../../constants/routes';
-import fire from '../Firebase';
+
+const INITIAL_STATE = {
+    postTitle: '',
+    postDescription: '',
+    loading: false,
+    dataPosts: [],
+    error: null,
+};
 
 
 class NewPost extends Component {
@@ -12,143 +20,124 @@ class NewPost extends Component {
         super(props)
         this.state = {
             postTitle: '',
-            description: '',
+            postDescription: '',
             loading: false,
             dataPosts: [],
             error: null,
         };
     }
-    componentDidMount() {
-        const myPost = fire.database().ref("posts/");
-        // console.log(myCard)
-        myPost.on("value", snapshot => {
-            const myPostFromDatabase = snapshot.val();
-            // console.log(myCardFromDatabase)
-            if (myPostFromDatabase === null) {
-                console.log("Posts at our firebase is null");
-            } else {
-                const posts = Object.keys(snapshot.val()).map(key => {
-                    return {
-                        key: key,
-                        postTitle: myPostFromDatabase[key].postTitle,
-                        description: myPostFromDatabase[key].description,
-                        listKey: myPostFromDatabase[key].listKey
-                    };
-                });
-                this.setState({
-                    dataPosts: posts
-                });
-            }
-        });
+    componentDidUpdate(prevProps, prevState) {
+        // check on previous state
+        // only write when it's different with the new state
+        if (prevState !== this.state) {
+            this.writePostData();
+        }
     }
 
-    onChangeText = event => {
-        this.setState({ text: event.target.value });
+    writePostData = () => {
+        fire.database().ref('posts').set(this.state);
+        console.log('DATA SAVED');
+    }
+
+    buttonSave = () => {
+        this.setState({ ...INITIAL_STATE });
+        this.props.history.push(ROUTES.ADMIN);
     };
 
-    _savePost = (key, pTitle, pDescript, e) => {
-        // console.log("key from card");
-        // console.log(key.key);
-        // console.log("title from card:");
-        // console.log(title.title);
-        if (this.state.postTitle === "") {
-            alert("Title cannot be empty");
-        } else {
-            const newPostey = fire
-                .database()
-                .ref("posts/")
-                .push().key;
-
-            fire
-                .database()
-                .ref("posts/")
-                .update({
-                    [newPostey]: {
-                        listKey: key.key,
-                        postTitle: pTitle.postTitle,
-                        description: pDescript.description
-                    }
-                });
-
-            this.setState({
-                postTitle: "",
-                descriptiom: ""
-            });
-        }
+    _handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     };
 
-    _handleChange = event => {
-        this.setState({ [event.target.title]: event.target.value });
-    };
 
-    _handleDeletePost = key => {
-        fire
-            .database()
-            .ref(`posts/${key}`)
-            .remove();
-
-        console.log("Successfully deleted Post");
-        const myPostLength = this.state.dataPosts.length;
-        // console.log(myCardLength)
-        if (myPostLength === 1) {
-            this.setState({
-                dataPosts: []
-            });
-        }
-    };
 
     render() {
         return (
-            <div className="container-body">
+            <div className="container">
                 <div className="row">
-                    <h2>Add New Post</h2>
+                    <div className="pageHeader">Add New Post</div>
                 </div>
                 <hr />
-                <Form
-                    onSubmit={event =>
-                        this.savePost(event)
-                    }
-                >
+                <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
+                        <input type='hidden' ref='uid' />
                         <div className="col-md-6">
-                            <h3>Enter Title</h3>
                             <Input
-                                type="text"
-                                name="postTitle"
                                 value={this.state.postTitle}
                                 onChange={this._handleChange}
+                                type="text"
+                                name="postTitle"
+                                ref='postTitle'
                                 id="postTitle"
-                                placeholder="Think of an awesome title!"
+                                placeholder="Enter a Title!"
                             />
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <Input
+                                    value={this.state.postDescription}
+                                    onChange={this._handleChange}
+                                    className="textareaT4"
+                                    type="textarea"
+                                    name="description"
+                                    ref='description'
+                                    id="description"
+                                    placeholder="Think of something awesome to write!"
+                                />
+                            </div>
                         </div>
                     </FormGroup>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <Editor
-                                type="text"
-                                name="description"
-                                value={this.state.description}
-                                onChange={this._handleChange}
-                                id="description"
-                                placeholder="Think of something awesome to write!"
-                            />
-                        </div>
-                    </div>
+
                     <hr />
-                    <Button 
-                        onClick={(postTitle, description) =>
-                            this._saveCard(
-                                { postTitle },
-                                { description }
-                            )
-                        }
-                        outline color="success" type="submit">
-                            Save Post
+                    <Button
+                        outline color="success" type="submit"
+                        onClick={this.buttonSave}
+                    >
+                        Save Post
                     </Button>{' '}
-                    <Button outline color="danger"><Link to={ROUTES.ADMIN}>Cancel Post</Link></Button>
                 </Form>
             </div>
         )
+    }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        let postTitle = this.refs.postTitle.value;
+        let description = this.refs.postDescription.value;
+        let uid = this.refs.uid.value;
+
+        if (uid && postTitle && description) {
+            const { posts } = this.state;
+            const postIndex = posts.findIndex(data => {
+                return data.uid === uid
+            });
+            posts[postIndex].postTitle = postTitle;
+            posts[postIndex].description = description;
+            this.setState({ posts });
+        }
+        else if (postTitle && description) {
+            const uid = new Date().getTime().toString();
+            const { posts } = this.state;
+            posts.push({ uid, postTitle, description })
+            this.setState({ posts });
+        }
+
+        this.refs.postTitle.value = '';
+        this.refs.postDescription.value = '';
+    }
+
+    removeData = (post) => {
+        const { posts } = this.state;
+        const newState = posts.filter(data => {
+            return data.uid !== post.uid;
+        });
+        this.setState({ posts: newState });
+    }
+
+    updateData = (post) => {
+        this.refs.uid.value = post.uid;
+        this.refs.postTitle.value = post.postTitle;
+        this.refs.postDescription.value = post.postDescription;
     }
 }
 

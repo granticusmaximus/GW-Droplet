@@ -1,20 +1,27 @@
+import fire from '../Firebase/fire';
 import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
-import fire from '../../Firebase';
+import * as ROUTES from '../../constants/routes';
+
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+};
 
 class SignIn extends Component {
     constructor(props) {
       super(props);
-      this.state = {
-        email: "",
-        password: ""
-      };
+      this.state = { ...INITIAL_STATE };
     }
   
     _userSignIn = e => {
       fire
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          this.setState({ ...INITIAL_STATE });
+          this.props.history.push(ROUTES.ADMIN);
+        })
         .catch(error => {
           console.log(error);
         });

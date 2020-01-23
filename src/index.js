@@ -1,13 +1,15 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min.js";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../src/assets/css/App.css';
-import Firebase, { FirebaseContext } from './components/Firebase';
+import App from './components/App';
+import * as serviceWorker from './serviceWorker';
 
-import App from '../src/App';
+/*const store = createStore(reducers, {}, applyMiddleware(reduxThunk));*/
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new Firebase()}>
-    <App />
-  </FirebaseContext.Provider>,
-  document.querySelector('#root'),
+  <App />,
+  document.getElementById("root")
 );
+serviceWorker.register();

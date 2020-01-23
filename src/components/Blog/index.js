@@ -11,7 +11,7 @@ class BlogPage extends Component {
   }
   render() {
     return (
-      <div className="container-body">
+      <div className="container">
         <h2>(#) of Posts</h2>
         <hr />
         <p>Post Cards will go here</p>
