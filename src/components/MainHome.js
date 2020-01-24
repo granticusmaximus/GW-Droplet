@@ -40,7 +40,7 @@ const MainHome = () => (
         <hr />
         <div className="row">
           <div className="col-md-12">
-            <div className="card card-1">
+            <div className="card card-3">
               <h4>A little more about me</h4>
               <p>
                 I have my most fun in the developmental realm working with ReactJS and C#. With these two items,
