@@ -1,4 +1,4 @@
-import React from "./node_modules/react";
+import React from "react";
 import {
   TabContent,
   TabPane,
@@ -7,8 +7,7 @@ import {
   NavLink,
   Row,
   Col
-} from "./node_modules/reactstrap";
-import classnames from "./node_modules/classnames";
+} from "reactstrap";
 import SignIn from "./SignIn";
 
 export default class Page extends React.Component {
@@ -35,20 +34,12 @@ export default class Page extends React.Component {
         <Nav tabs>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === "1" })}
-              onClick={() => {
-                this.toggle("1");
-              }}
             >
               Login
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === "2" })}
-              onClick={() => {
-                this.toggle("2");
-              }}
             >
               Register
             </NavLink>

@@ -1,6 +1,6 @@
 import fire from '../Firebase/fire';
-import React, { Component } from "./node_modules/react";
-import { Form, FormGroup, Input, Button } from "./node_modules/reactstrap";
+import React, { Component } from "react";
+import { Form, FormGroup, Input, Button } from "reactstrap";
 import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
