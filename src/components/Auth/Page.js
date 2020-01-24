@@ -1,4 +1,4 @@
-import React from "react";
+import React from "./node_modules/react";
 import {
   TabContent,
   TabPane,
@@ -7,8 +7,8 @@ import {
   NavLink,
   Row,
   Col
-} from "reactstrap";
-import classnames from "classnames";
+} from "./node_modules/reactstrap";
+import classnames from "./node_modules/classnames";
 import SignIn from "./SignIn";
 
 export default class Page extends React.Component {
