@@ -9,7 +9,6 @@ import MainHome from './MainHome';
 import BlogPage from './Blog/index'
 import NewPost from './Blog/NewPost'
 import SignIn from './auth/SignIn'
-import SignUp from './auth/SignUp'
 import Page from './auth/Page'
 import ExperiencePage from './Experience';
 import MyResume from './Experience/MyResume';
@@ -26,7 +25,6 @@ const App = () => (
           <Route exact path={ROUTES.BLOG} component={BlogPage} />
           <Route exact path={ROUTES.NEW_POST} component={NewPost} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
-          <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
           <Route exact path={ROUTES.LOGIN} component={Page} />
           <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
           <Route exact path={ROUTES.RESUME} component={MyResume} />
