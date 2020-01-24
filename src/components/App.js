@@ -14,6 +14,7 @@ import ExperiencePage from './Experience';
 import MyResume from './Experience/MyResume';
 import Admin from './Admin';
 import PortfolioPage from './Portfolio';
+import SignUp from './auth/SignUp';
 
 const App = () => (
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
@@ -25,6 +26,7 @@ const App = () => (
           <Route exact path={ROUTES.BLOG} component={BlogPage} />
           <Route exact path={ROUTES.NEW_POST} component={NewPost} />
           <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
+          <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
           <Route exact path={ROUTES.LOGIN} component={Page} />
           <Route exact path={ROUTES.EXPERIENCE} component={ExperiencePage} />
           <Route exact path={ROUTES.RESUME} component={MyResume} />
