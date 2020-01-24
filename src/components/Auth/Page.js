@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 import classnames from "classnames";
 import SignIn from "./SignIn";
-import SignUp from "./SignUp";
 
 export default class Page extends React.Component {
   constructor(props) {
@@ -60,13 +59,6 @@ export default class Page extends React.Component {
             <Row>
               <Col sm="12">
                 <SignIn />
-              </Col>
-            </Row>
-          </TabPane>
-          <TabPane tabId="2">
-            <Row>
-              <Col sm="12">
-                <SignUp />
               </Col>
             </Row>
           </TabPane>
