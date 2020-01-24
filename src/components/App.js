@@ -8,13 +8,13 @@ import Footer from './Footer/Footer';
 import MainHome from './MainHome';
 import BlogPage from './Blog/index'
 import NewPost from './Blog/NewPost'
-import SignIn from './auth/SignIn'
-import Page from './auth/Page'
+import SignIn from './Auth/SignIn'
+import Page from './Auth/Page'
 import ExperiencePage from './Experience';
 import MyResume from './Experience/MyResume';
 import Admin from './Admin';
 import PortfolioPage from './Portfolio';
-import SignUp from './auth/SignUp';
+import SignUp from './Auth/SignUp';
 
 const App = () => (
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
