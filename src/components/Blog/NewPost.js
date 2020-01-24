@@ -48,6 +48,11 @@ class NewPost extends Component {
         });
     };
 
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.defaultValue
+        });
+    };
 
 
     render() {
@@ -74,7 +79,7 @@ class NewPost extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <Input
-                                    value={this.state.postDescription}
+                                    Value=" "
                                     onChange={this._handleChange}
                                     className="textareaT4"
                                     type="textarea"
