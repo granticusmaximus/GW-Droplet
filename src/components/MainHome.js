@@ -1,14 +1,14 @@
 import React from "react";
 import "../assets/css/App.css";
 import Fade from 'react-reveal/Fade';
+import logo from '../assets/img/brand.png'
 
 
 const MainHome = () => (
   <div className="container">
     <Fade bottom cascade>
       <div className="homeHeader">
-        <div className="headerAvatar">
-        </div>
+        <center><img className="headerImg" src={logo} /></center>
         <center><h2 className="headerColor">Welcome!</h2></center>
         <center><h4 className="headerColor">Innovating Inspiration in A Digital Realm </h4></center>
       </div>
