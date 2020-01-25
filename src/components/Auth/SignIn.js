@@ -1,4 +1,4 @@
-import fire from '../Firebase/fire';
+import { fire } from "../Firebase/fire";
 import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import * as ROUTES from '../../constants/routes';

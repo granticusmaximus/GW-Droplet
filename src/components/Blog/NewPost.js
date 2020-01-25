@@ -1,147 +1,156 @@
-import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input } from 'reactstrap';
-import 'react-quill/dist/quill.snow.css';
-import fire from '../Firebase/fire';
-import * as ROUTES from '../../constants/routes';
+import React, { useState } from "react";
+import { fire } from "../Firebase/fire";
 
-const INITIAL_STATE = {
-    postTitle: '',
-    postDescription: '',
-    loading: false,
-    dataPosts: [],
-    error: null,
-};
-
-
-class NewPost extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            postTitle: '',
-            postDescription: '',
-            loading: false,
-            dataPosts: [],
-            error: null,
-        };
-    }
-    componentDidUpdate(prevProps, prevState) {
-        // check on previous state
-        // only write when it's different with the new state
-        if (prevState !== this.state) {
-            this.writePostData();
-        }
-    }
-
-    writePostData = () => {
-        fire.database().ref('posts').set(this.state);
-        console.log('DATA SAVED');
-    }
-
-    buttonSave = () => {
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.ADMIN);
+const labelStyles = {
+    display: "block",
+    marginBottom: 4,
+    color: "#1B242F"
+  };
+  
+  const inputStyles = {
+    width: "100%",
+    height: "2rem",
+    lineHeight: "2rem",
+    verticalAlign: "middle",
+    fontSize: "1rem",
+    marginBottom: "1.5rem",
+    padding: "0 0.25rem"
+  };
+  
+  const NewPost = ({ history }) => {
+    const [title, setTitle] = useState("");
+    const [slug, setSlug] = useState(" ");
+    const [coverImage, setCoverImage] = useState("");
+    const [coverImageAlt, setCoverImageAlt] = useState("");
+    const [content, setContent] = useState("");
+  
+    const generateDate = () => {
+      const now = new Date();
+      const options = { month: "long", day: "numeric", year: "numeric" };
+  
+      const year = now.getFullYear();
+  
+      let month = now.getMonth() + 1;
+      if (month < 10) {
+        month = `0${month}`;
+      }
+  
+      const day = now.getDate();
+      if (day < 10) {
+        day = `0${day}`;
+      }
+  
+      return {
+        formatted: `${year}-${month}-${day}`,
+        pretty: now.toLocaleDateString("en-US", options)
+      };
     };
-
-    _handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+  
+    const createPost = () => {
+      const date = generateDate();
+      const newPost = {
+        title,
+        dateFormatted: date.formatted,
+        datePretty: date.pretty,
+        slug,
+        coverImage,
+        coverImageAlt,
+        content
+      };
+      fire()
+        .database()
+        .ref()
+        .child(`posts/${slug}`)
+        .set(newPost)
+        .then(() => history.push(`/`));
     };
-
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.defaultValue
-        });
-    };
-
-
-    render() {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="pageHeader">Add New Post</div>
-                </div>
-                <hr />
-                <Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                        <input type='hidden' ref='uid' />
-                        <div className="col-md-6">
-                            <Input
-                                value={this.state.postTitle}
-                                onChange={this._handleChange}
-                                type="text"
-                                name="postTitle"
-                                ref='postTitle'
-                                id="postTitle"
-                                placeholder="Enter a Title!"
-                            />
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <Input
-                                    Value=" "
-                                    onChange={this._handleChange}
-                                    className="textareaT4"
-                                    type="textarea"
-                                    name="description"
-                                    ref='description'
-                                    id="description"
-                                    placeholder="Think of something awesome to write!"
-                                />
-                            </div>
-                        </div>
-                    </FormGroup>
-
-                    <hr />
-                    <Button
-                        outline color="success" type="submit"
-                        onClick={this.buttonSave}
-                    >
-                        Save Post
-                    </Button>{' '}
-                </Form>
-            </div>
-        )
-    }
-    handleSubmit = (event) => {
-        event.preventDefault();
-        let postTitle = this.refs.postTitle.value;
-        let description = this.refs.postDescription.value;
-        let uid = this.refs.uid.value;
-
-        if (uid && postTitle && description) {
-            const { posts } = this.state;
-            const postIndex = posts.findIndex(data => {
-                return data.uid === uid
-            });
-            posts[postIndex].postTitle = postTitle;
-            posts[postIndex].description = description;
-            this.setState({ posts });
-        }
-        else if (postTitle && description) {
-            const uid = new Date().getTime().toString();
-            const { posts } = this.state;
-            posts.push({ uid, postTitle, description })
-            this.setState({ posts });
-        }
-
-        this.refs.postTitle.value = '';
-        this.refs.postDescription.value = '';
-    }
-
-    removeData = (post) => {
-        const { posts } = this.state;
-        const newState = posts.filter(data => {
-            return data.uid !== post.uid;
-        });
-        this.setState({ posts: newState });
-    }
-
-    updateData = (post) => {
-        this.refs.uid.value = post.uid;
-        this.refs.postTitle.value = post.postTitle;
-        this.refs.postDescription.value = post.postDescription;
-    }
-}
-
-export default NewPost;
+  
+    return (
+      <div className="container">
+        <h1 className="pageHeader">Create a new post</h1>
+        <section style={{ margin: "2rem 0" }}>
+          <label style={labelStyles} htmlFor="title-field">
+            Title
+          </label>
+          <input
+            style={inputStyles}
+            id="title-field"
+            type="text"
+            value={title}
+            onChange={({ target: { value } }) => {
+              setTitle(value);
+            }}
+          />
+  
+          <label style={labelStyles} htmlFor="slug-field">
+            Slug
+          </label>
+          <input
+            style={inputStyles}
+            id="slug-field"
+            type="text"
+            value={slug}
+            onChange={({ target: { value } }) => {
+              setSlug(value);
+            }}
+          />
+  
+          <label style={labelStyles} htmlFor="cover-image-field">
+            Cover image
+          </label>
+          <input
+            style={inputStyles}
+            id="cover-image-field"
+            type="text"
+            value={coverImage}
+            onChange={({ target: { value } }) => {
+              setCoverImage(value);
+            }}
+          />
+  
+          <label style={labelStyles} htmlFor="cover-image-alt-field">
+            Cover image alt
+          </label>
+          <input
+            style={inputStyles}
+            id="cover-image-alt-field"
+            type="text"
+            value={coverImageAlt}
+            onChange={({ target: { value } }) => {
+              setCoverImageAlt(value);
+            }}
+          />
+  
+          <label style={labelStyles} htmlFor="content-field">
+            Content
+          </label>
+          <textarea
+            style={{ ...inputStyles, height: 200, verticalAlign: "top" }}
+            id="content"
+            type="text"
+            value={content}
+            onChange={({ target: { value } }) => {
+              setContent(value);
+            }}
+          />
+          <div style={{ textAlign: "right" }}>
+            <button
+              style={{
+                border: "none",
+                color: "#fff",
+                backgroundColor: "#039be5",
+                borderRadius: "4px",
+                padding: "8px 12px",
+                fontSize: "0.9rem"
+              }}
+              onClick={createPost}
+            >
+              Create
+            </button>
+          </div>
+        </section>
+      </div>
+    );
+  };
+  
+  export default NewPost;
