@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import logo from '../../assets/img/brand.png'
 
 export default class PartialNav extends React.Component {
   constructor(props) {
@@ -36,7 +37,10 @@ export default class PartialNav extends React.Component {
     return (
         <div>
           <Navbar color="dark" light expand="md">
-            <NavbarBrand href="/">Grant Watson</NavbarBrand>
+            <NavbarBrand href="/">
+              <img className="navImg" src={logo} />
+              GWS
+            </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>

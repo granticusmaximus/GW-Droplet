@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/css/App.css";
 import Fade from 'react-reveal/Fade';
 
+
 const MainHome = () => (
   <div className="container">
     <Fade bottom cascade>
