@@ -16,6 +16,11 @@ html * {
   height: 50px;
 }
 
+.headerImg {
+  height: 150px;
+  width: 150px;
+}
+
 .card{
   position: relative;
   display: flex;
@@ -70,7 +75,7 @@ html * {
   width: 450px;
   height: 200px;
   background-color: #fff;
-  background-image: url(/static/media/GWS.61f992fa.jpg);
+  background-image: url(/src/assets/img/GWS.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 50% 50%;
