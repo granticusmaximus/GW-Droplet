@@ -33,9 +33,6 @@ const BlogPage = () => {
     <div className="container">
       <div className="container">
         <h1 className="pageHeader">Blog posts</h1>
-        <p>
-          Welcome!
-      </p>
         {blogPosts.map(blogPost => (
           <section key={blogPost.slug} className="blogCard">
             <img src={blogPost.coverImage} alt={blogPost.coverImageAlt} />
