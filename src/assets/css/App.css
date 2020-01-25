@@ -600,13 +600,12 @@ text-decoration: none;
   font-weight: bold;
 }
 
-.navbar-collapse{
-  background-color: #1B242F;
-}
-
 @media (max-width: 768px) {
   .bg-dark {
     height: 75px;
+  }
+  .navbar-collapse{
+    background-color: #1B242F;
   }
 }
 
