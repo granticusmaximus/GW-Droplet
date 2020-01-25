@@ -165,8 +165,13 @@ body {
 
 .container {
   width: 100%;
-  min-height: 650px;
-  padding: 50px;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 500px;
+    padding: 0px;
+  }
 }
 
 .sideBar {
