@@ -600,6 +600,16 @@ text-decoration: none;
   font-weight: bold;
 }
 
+.navbar-collapse{
+  background-color: #1B242F;
+}
+
+@media (max-width: 768px) {
+  .bg-dark {
+    height: 75px;
+  }
+}
+
 .timeline-item-content a::after {
   content: ' ►';
   font-size: 12px;

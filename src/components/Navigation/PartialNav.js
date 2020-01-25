@@ -1,65 +1,42 @@
-import React from "react";
-import fire from "../Firebase/fire";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import React, { useState } from 'react';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import '../../assets/css/bootstrap.css'
 import logo from '../../assets/img/brand.png'
 
-export default class PartialNav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false,
-      user: "Grant Watson"
-    };
-  }
+const PartialNav = (props) => {
+  const [collapsed, setCollapsed] = useState(true);
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  const toggleNavbar = () => setCollapsed(!collapsed);
 
-  userLogout = e => {
-    fire.auth().signOut();
-  };
-
-  render() {
-    return (
-        <div>
-          <Navbar color="dark" light expand="md">
-            <NavbarBrand href="/">
-              <img className="navImg" src={logo} />
-              GWS
+  return (
+    <div>
+      <Navbar color="dark" light expand="md">
+        <NavbarBrand href="/">
+          <img className="navImg" src={logo} />
+          GWS
             </NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink><Link to={ROUTES.HOME}>Home</Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to={ROUTES.EXPERIENCE}>Experience</Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to={ROUTES.PORTFOLIO}>Portfolio</Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to={ROUTES.BLOG}>Blog</Link></NavLink>
-                </NavItem>
-              </Nav>
-            </Collapse>
-          </Navbar>
-        </div>
-    );
-  }
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink><Link to={ROUTES.HOME}>Home</Link></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink><Link to={ROUTES.EXPERIENCE}>Experience</Link></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink><Link to={ROUTES.PORTFOLIO}>Portfolio</Link></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink><Link to={ROUTES.BLOG}>Blog</Link></NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
+  );
 }
+
+export default PartialNav;
