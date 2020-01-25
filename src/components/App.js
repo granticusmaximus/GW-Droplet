@@ -14,6 +14,7 @@ import ExperiencePage from './Experience';
 import MyResume from './Experience/MyResume';
 import Admin from './Admin';
 import PortfolioPage from './Portfolio';
+import Post from './Blog/post';
 
 const App = () => (
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
@@ -30,6 +31,7 @@ const App = () => (
           <Route exact path={ROUTES.RESUME} component={MyResume} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
           <Route exact path={ROUTES.PORTFOLIO} component={PortfolioPage} />
+          <Route exact path={ROUTES.POST}  component={Post} />
         </div>
       </Box>
     </div>

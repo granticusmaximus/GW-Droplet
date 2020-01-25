@@ -607,6 +607,10 @@ text-decoration: none;
   .navbar-collapse{
     background-color: #1B242F;
   }
+  .navbar-toggler {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .timeline-item-content a::after {
