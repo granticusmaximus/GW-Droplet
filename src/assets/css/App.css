@@ -62,10 +62,10 @@ html * {
 }
 
 .headerAvatar {
-  width: 144px;
+  width: 450px;
   height: 200px;
-  background-color: #eef0f4;
-  background-image: url(../img/logo.png);
+  background-color: #fff;
+  background-image: url(/static/media/GWS.61f992fa.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 50% 50%;
@@ -74,7 +74,7 @@ html * {
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 3%;
 }
 
 
