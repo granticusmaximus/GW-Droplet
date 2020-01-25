@@ -37,9 +37,9 @@ const BlogPage = () => {
           Welcome!
       </p>
         {blogPosts.map(blogPost => (
-          <section key={blogPost.slug} className="card">
+          <section key={blogPost.slug} className="blogCard">
             <img src={blogPost.coverImage} alt={blogPost.coverImageAlt} />
-            <div className="card-content">
+            <div className="blogCard-content">
               <h2>
                 {blogPost.title} &mdash;{" "}
                 <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>

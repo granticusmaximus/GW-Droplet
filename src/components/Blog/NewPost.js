@@ -19,7 +19,7 @@ const labelStyles = {
   
   const NewPost = ({ history }) => {
     const [title, setTitle] = useState("");
-    const [slug, setSlug] = useState("");
+    const [slug, setSlug] = useState(" ");
     const [coverImage, setCoverImage] = useState("");
     const [coverImageAlt, setCoverImageAlt] = useState("");
     const [content, setContent] = useState("");
