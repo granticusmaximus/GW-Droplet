@@ -42,6 +42,10 @@ html * {
   margin-top: 12px;
 }
 
+.navbar-brand {
+  color: white;
+}
+
 .card{
   position: relative;
   display: flex;
@@ -169,10 +173,6 @@ background-image: url(https://ionicframework.com/img/getting-started/ionic-nativ
 .project img{
 width: 30em;  
 height: 30em;
-}
-
-.navbar-light .navbar-brand {
-  color: white;
 }
 
 body {
@@ -339,11 +339,40 @@ a {
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
-  color: #89229b;
-  text-decoration: none;
+
+.shift a {
+  position:relative;
+  z-index: 1;
 }
+
+.shift a:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  content: '.';
+  color: transparent;
+  background: #04C2C9;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.shift a:focus {
+  background: #04C2C9 !important; 
+}
+
+.shift a:hover:after {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
 
 legend {
   border-bottom: 0;
@@ -359,7 +388,6 @@ legend {
 }
 
 a:focus,
-a:active,
 button:active,
 button:focus,
 button:hover,

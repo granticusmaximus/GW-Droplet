@@ -37,6 +37,10 @@ class ExperiencePage extends Component {
           <div className="row">
             <div className="col-md-12">
               <hr />
+              <center>
+                <h4>The following percentages are my confidence levels of each skill. </h4>
+              </center>
+              <hr />
               <SkillBar skills={skills} colors={colors} />
             </div>
           </div>
@@ -48,6 +52,11 @@ class ExperiencePage extends Component {
           </div>
           <div className="row">
             <div className="col-md-12">
+              <hr />
+              <center>
+                <h4>The following is my relevant work related to the technical world.</h4>
+              </center>
+              <hr />
               <Timeline />
               <center><Button outline color="primary"><Link to={ROUTES.RESUME}>View Full Resume</Link></Button></center>
             </div>
