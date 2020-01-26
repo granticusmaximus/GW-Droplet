@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import Fade from 'react-reveal/Fade';
 import data from './data';
-import Project from './Project';
 import Info from './Info';
+import ProjectCard from "./ProjectCard";
 
 class PortolioPage extends Component {
   state = {}
   render() {
     return (
       <div className="container">
-
         <div>
-          <h1 className='heading'>
+          <h4 className='heading'>
             <Fade bottom cascade>
               <div className="pageHeader">
                 Current Works
@@ -26,22 +25,21 @@ class PortolioPage extends Component {
                 </div>
               </center>
             </Fade>
-          </h1>
-          <center>
-            <div className='work-content'>
+          </h4>
+            <div className='work'>
               {data.projects.map((project) => (
-                <Project key={project.id}
-                  title={project.title}
-                  service={project.service}
-                  imageSrc={project.imageSrc}
-                  url={project.url}
-                ></Project>
+                  <div className="col-md-4">
+                    <ProjectCard key={project.id}
+                      title={project.title}
+                      service={project.service}
+                      imageSrc={project.imageSrc}
+                      tech={project.tech}
+                    ></ProjectCard>
+                  </div>
               ))}
             </div>
-          </center>
         </div>
       </div>
-
     );
   }
 }

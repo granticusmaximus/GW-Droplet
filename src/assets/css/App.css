@@ -21,6 +21,27 @@ html * {
   width: 150px;
 }
 
+.portfolioCard {
+  border: 1px solid grey;
+  border-radius: 4px;
+  margin-top: 24px;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.portfolioCard img {
+  width: 100%;
+}
+
+.portfolioCard-content {
+  padding: 16px;
+}
+
+.portfolioCard-content a {
+  display: inline-block;
+  margin-top: 12px;
+}
+
 .blogCard {
   border: 1px solid grey;
   border-radius: 4px;
@@ -152,12 +173,12 @@ background-image: url(https://ionicframework.com/img/getting-started/ionic-nativ
 }
 
 .work{
-  position: relative;
   display: flex;
-  flex-direction: column;
-  left:15em;
-  top:8em;
-  align-items: flex-start;
+  flex-direction: row;
+  grid-template-rows: auto;
+  grid-row-end: auto;
+  grid-auto-rows: auto;
+  flex-wrap: wrap;
 }
 .work .heading{
   font-family: 'Montserrat', sans-serif;
@@ -165,9 +186,7 @@ background-image: url(https://ionicframework.com/img/getting-started/ionic-nativ
   text-align: left;
 }
 .work .work-content{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-gap: 2em;
+  grid-auto-rows: auto;
 }
 
 .project img{

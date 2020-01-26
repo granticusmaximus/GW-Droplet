@@ -43,6 +43,7 @@ export default
                 service: 'UI/UX Design built while at Wayne Reaves Software', // Add Your Service Type Here
                 //Project Image - Add Your Project Image Here
                 imageSrc: "https://i.imgur.com/OTzkUz8.jpg",
+                tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 //Project URL - Add Your Project Url Here
                 url: '#'
             },
@@ -51,6 +52,7 @@ export default
                 title: 'Project 2',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/JBxFDsN.jpg",
+                tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 url: '#',
             },
             {
@@ -58,6 +60,7 @@ export default
                 title: 'Project 3',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/2hTZSIc.jpg",
+                tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 url: '#'
             },
             {
@@ -65,6 +68,7 @@ export default
                 title: 'Project 4',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/Vp6K3ct.jpg",
+                tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 url: '#'
             },
             {
@@ -72,6 +76,7 @@ export default
                 title: 'Project 5',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/4mDSoc0.jpg",
+                tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 url: '#'
             },
             {
@@ -79,6 +84,7 @@ export default
                 title: 'Project 6',
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/zebpYzu.jpg",
+                tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 url: '#'
             },
             {
@@ -86,6 +92,7 @@ export default
                 title: 'Project 7',
                 service: 'A CRM app built in ASP.NET',
                 imageSrc: "https://i.imgur.com/DYk1Rqq.jpg",
+                tech: 'Backend was ASP.NET/ Frontend tech used was Razor, Vanilla JavaScript, CSS, HTML',
                 url: '#'
             },
             {
@@ -93,6 +100,7 @@ export default
                 title: 'Project 8',
                 service: 'A WordPress Theme built for Global U',
                 imageSrc: "https://i.imgur.com/tZwInCZ.jpg",
+                tech: 'Backend was PHP/ Frontend tech used was HTML, jQuery, CSS, React',
                 url: '#'
             }
 
