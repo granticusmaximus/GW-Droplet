@@ -24,9 +24,15 @@ html * {
 .portfolioCard {
   border: 1px solid grey;
   border-radius: 4px;
+  background-color: #1B242F;
+  border-bottom: 3px solid #04C2C9;
   margin-top: 24px;
   box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.portfolioCard:hover {
+  border: 2px solid black;
 }
 
 .portfolioCard img {
@@ -35,6 +41,7 @@ html * {
 
 .portfolioCard-content {
   padding: 16px;
+  color: white;
 }
 
 .portfolioCard-content a {
