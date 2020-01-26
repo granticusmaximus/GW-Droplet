@@ -15,22 +15,21 @@ const PartialNav = (props) => {
       <Navbar color="dark" light expand="md">
         <NavbarBrand href="/">
           <img className="navImg" src={logo} />
-          GWS
-            </NavbarBrand>
+        </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink><Link to={ROUTES.HOME}>Home</Link></NavLink>
+              <NavLink className="shift"><Link to={ROUTES.HOME}>Home</Link></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink><Link to={ROUTES.EXPERIENCE}>Experience</Link></NavLink>
+              <NavLink className="shift"><Link to={ROUTES.EXPERIENCE}>Experience</Link></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink><Link to={ROUTES.PORTFOLIO}>Portfolio</Link></NavLink>
+              <NavLink className="shift"><Link to={ROUTES.PORTFOLIO}>Portfolio</Link></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink><Link to={ROUTES.BLOG}>Blog</Link></NavLink>
+              <NavLink className="shift"><Link to={ROUTES.BLOG}>Blog</Link></NavLink>
             </NavItem>
           </Nav>
         </Collapse>
