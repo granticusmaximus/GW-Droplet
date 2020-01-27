@@ -31,7 +31,7 @@ const App = () => (
           <Route exact path={ROUTES.RESUME} component={MyResume} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
           <Route exact path={ROUTES.PORTFOLIO} component={PortfolioPage} />
-          <Route exact path={ROUTES.POST}  component={Post} />
+          <Route exact path={ROUTES.POST} component={Post} />
         </div>
       </Box>
     </div>
