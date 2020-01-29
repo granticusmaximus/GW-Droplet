@@ -1,8 +1,8 @@
+
 import firebase from "firebase/app";
 import database from "firebase/database";
 
-
-var config = {
+const config = {
   apiKey: "AIzaSyA8jkkTr1HVAguX31bWtpD1BIiVFf749W0",
   authDomain: "gwwebapp.firebaseapp.com",
   databaseURL: "https://gwwebapp.firebaseio.com",
@@ -12,6 +12,7 @@ var config = {
   appId: "1:232262519930:web:5d79eeb55ff62a9b587fc3",
   measurementId: "G-J7391EFDDJ"
 };
+
 let firebaseCache;
 
 export const fire = () => {
@@ -23,4 +24,3 @@ export const fire = () => {
   firebaseCache = firebase;
   return firebase;
 };
-
