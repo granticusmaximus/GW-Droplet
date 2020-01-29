@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { fire } from "../Firebase/fire";
 import { Link } from "react-router-dom";
+import { CommonLoading } from 'react-loadingg';
 
 const BlogPage = () => {
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ const BlogPage = () => {
   }
 
   if (loading) {
-    return <div className="container"><h1>Loading...</h1></div>;
+    return <div className="container"><CommonLoading /> </div>;
   }
 
   return (
