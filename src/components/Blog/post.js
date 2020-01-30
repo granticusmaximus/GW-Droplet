@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { CommonLoading } from 'react-loadingg';
 import { fire } from "../Firebase/fire";
 import { Redirect } from "react-router-dom";
 
-const Post = ({ match }) => {
-  const slug = match.params.slug;
-  const [loading, setLoading] = useState(true);
-  const [currentPost, setCurrentPost] = useState();
+class Post extends React.PureComponent {
+  constructor(props) {
+    super(props)
+  }
 
-  if (loading && !currentPost) {
-    fire()
+  render() {
+    const { match } = this.props
+    const slug = match.params.slug;
+    const [loading, setLoading] = useState(true);
+    const [currentPost, setCurrentPost] = useState();
+    if (loading && !currentPost) {
+      fire()
       .database()
       .ref()
       .child(`/posts/${slug}`)
@@ -20,26 +24,18 @@ const Post = ({ match }) => {
         }
         setLoading(false);
       });
+    }
+    return (
+      (currentPost.map(post =>
+        <div>
+        <img src={post.coverImage} alt={post.coverImageAlt}>
+        <h1>{post.title}</h1>
+        <em>{post.datePretty}</em>
+        <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
+        </img>
+        </div>
+      )));
+    }
   }
-
-  const postDoesNotExist = !currentPost;
-  if (postDoesNotExist) {
-    return <Redirect to="/404" />;
-  }
-
-  if (loading) {
-    return <div className="container"><CommonLoading /> </div>;
-  }
-
-  return (
-    <div>
-      <img src={currentPost.coverImage} alt={currentPost.coverImageAlt}>
-        <h1>{currentPost.title}</h1>
-        <em>{currentPost.datePretty}</em>
-        <p dangerouslySetInnerHTML={{ __html: currentPost.content }}></p>
-      </img>
-    </div>
-  );
-};
 
 export default Post;

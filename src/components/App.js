@@ -14,7 +14,6 @@ import MyResume from './Experience/MyResume';
 import Admin from './Admin';
 import PortfolioPage from './Portfolio';
 import Post from './Blog/post';
-import Create from './Blog/create';
 import NewPost from './Blog/NewPost';
 
 const App = () => (
@@ -31,7 +30,6 @@ const App = () => (
           <Route exact path={ROUTES.RESUME} component={MyResume} />
           <Route exact path={ROUTES.ADMIN} component={Admin} />
           <Route exact path={ROUTES.PORTFOLIO} component={PortfolioPage} />
-          <Route exact path={ROUTES.CREATE} component={Create} />
           <Route exact path={ROUTES.NEW_POST} component={NewPost} />
           <Route exact path={ROUTES.POST} component={Post} />
         </div>

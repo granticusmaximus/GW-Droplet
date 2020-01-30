@@ -1,3 +1,4 @@
+export const POST = "/posts/:slug";
 export const HOME = '/';
 export const ADMIN = '/admin';
 export const BLOG = '/blog';
@@ -8,6 +9,7 @@ export const LOGIN = '/login';
 export const EXPERIENCE = '/experience';
 export const RESUME = '/my-resume';
 export const PORTFOLIO = '/portfolio';
-export const NO_MATCH = '/404';
-export const POST = "/:slug";
 export const CREATE = "/create";
+export const DETAILS = "/details";
+export const PROJECT_LIST = "/list";
+export const PROJECT_SUMMARY = "/summary";
