@@ -35,7 +35,7 @@ export default
                 //Change This To Hide The Image of About Section (True Or False)
             }
         ],
-        // Change Projects Here 
+        // Change Projects Here
         projects: [
             {
                 id: 1,//DO NOT CHANGE THIS (Please)😅
@@ -45,7 +45,7 @@ export default
                 imageSrc: "https://i.imgur.com/OTzkUz8.jpg",
                 tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
                 //Project URL - Add Your Project Url Here
-                url: '#'
+                url: 'https://www.thecycleexchange.com/'
             },
             {
                 id: 2,//DO NOT CHANGE THIS (Please)😅
@@ -53,7 +53,7 @@ export default
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/JBxFDsN.jpg",
                 tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
-                url: '#',
+                url: 'http://www.ultimatepowertruck.com/',
             },
             {
                 id: 3,//DO NOT CHANGE THIS (Please)😅
@@ -61,7 +61,6 @@ export default
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/2hTZSIc.jpg",
                 tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
-                url: '#'
             },
             {
                 id: 4,//DO NOT CHANGE THIS (Please)😅
@@ -69,7 +68,7 @@ export default
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/Vp6K3ct.jpg",
                 tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
-                url: '#'
+                url: 'http://www.carbuddys.com/'
             },
             {
                 id: 5,//DO NOT CHANGE THIS (Please)😅
@@ -77,7 +76,7 @@ export default
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/4mDSoc0.jpg",
                 tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
-                url: '#'
+                url: 'https://www.elevationmotors.com/'
             },
             {
                 id: 6,//DO NOT CHANGE THIS (Please)😅
@@ -85,7 +84,7 @@ export default
                 service: 'UI/UX Design built while at Wayne Reaves Software',
                 imageSrc: "https://i.imgur.com/zebpYzu.jpg",
                 tech: 'Backend was Ruby on Rails/ Frontend tech used was HTML, jQuery, CSS, Ractive',
-                url: '#'
+                url: 'https://www.adelsaautofinance.com/'
             },
             {
                 id: 7,//DO NOT CHANGE THIS (Please)😅
@@ -93,7 +92,7 @@ export default
                 service: 'A CRM app built in ASP.NET',
                 imageSrc: "https://i.imgur.com/DYk1Rqq.jpg",
                 tech: 'Backend was ASP.NET/ Frontend tech used was Razor, Vanilla JavaScript, CSS, HTML',
-                url: '#'
+                
             },
             {
                 id: 8,//DO NOT CHANGE THIS (Please)😅
@@ -101,7 +100,7 @@ export default
                 service: 'A WordPress Theme built for Global U',
                 imageSrc: "https://i.imgur.com/tZwInCZ.jpg",
                 tech: 'Backend was PHP/ Frontend tech used was HTML, jQuery, CSS, React',
-                url: '#'
+                url: 'https://www.globalu.com/'
             }
 
 

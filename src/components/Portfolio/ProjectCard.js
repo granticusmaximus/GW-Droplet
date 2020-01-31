@@ -8,10 +8,15 @@ class ProjectCard extends Component {
             <Fade bottom>
                 <div className='portfolioCard'>
                     <img src={this.props.imageSrc} alt={this.props.title}></img>
-                    <div className='portfolioCard-content'>
+                    <div className='portfolioCard-header'>
                         <h1>{this.props.title}</h1>
+                    </div>
+                    <div className='portfolioCard-content'>
                         <div>{this.props.service}</div>
                         <div>{this.props.tech}</div>
+                    </div>
+                    <div className='portfolioCard-action'>
+                        <span>{this.props.url}</span>
                     </div>
                 </div>
             </Fade>);

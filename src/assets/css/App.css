@@ -21,14 +21,32 @@ html * {
   width: 150px;
 }
 
+.postImg {
+  display: block;
+  width: 100%;
+  top: 0;
+  margin: 0px auto;
+  height: auto!important;
+  z-index: -1;
+}
+
 .portfolioCard {
   border: 1px solid grey;
   border-radius: 4px;
   background-color: #1B242F;
   border-bottom: 3px solid #04C2C9;
   margin-top: 24px;
-  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  height:auto;
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.portfolioCard-header{
+  color: white;
+  font-size: 150%;
+  background-color: inherit;
+  border-bottom: 1px solid rgba(160,160,160,0.2);
+  position: relative;
+  padding: 16px 24px;
 }
 
 .portfolioCard:hover {
@@ -42,11 +60,21 @@ html * {
 .portfolioCard-content {
   padding: 16px;
   color: white;
+  height:auto;
 }
 
 .portfolioCard-content a {
   display: inline-block;
   margin-top: 12px;
+}
+
+.portfolioCard-action {
+    color: white;
+    background-color: inherit;
+    border-top: 1px solid rgba(160,160,160,0.2);
+    position: relative;
+    font-size: 15px;
+    padding: 16px 24px;
 }
 
 .blogCard {
@@ -197,7 +225,7 @@ background-image: url(https://ionicframework.com/img/getting-started/ionic-nativ
 }
 
 .project img{
-width: 30em;  
+width: 30em;
 height: 30em;
 }
 
@@ -390,7 +418,7 @@ a {
 }
 
 .shift a:focus {
-  background: #04C2C9 !important; 
+  background: #04C2C9 !important;
 }
 
 .shift a:hover:after {
