@@ -40,11 +40,13 @@ const Post = ({ match }) => {
   else {
   return (
     <div>
-      <img src={currentPost.coverImage} alt={currentPost.coverImageAlt}>
-        <h1>{currentPost.title}</h1>
+
+      <div className='container'>
+        <h1 className='pageHeader'>{currentPost.title}</h1>
+        <center><img src={currentPost.coverImage} alt={currentPost.coverImageAlt} className='postImg'/></center>
         <em>{currentPost.datePretty}</em>
         <p dangerouslySetInnerHTML={{ __html: currentPost.content }}></p>
-      </img>
+      </div>
     </div>
   );
     }

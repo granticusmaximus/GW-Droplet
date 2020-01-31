@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom';
+import PostTable from './postTable';
 
 const Admin = () => (
   <div className="container">
@@ -10,6 +11,10 @@ const Admin = () => (
     <h4>Quick Actions</h4>
     <hr />
     <Button outline color="primary"><Link to={ROUTES.NEW_POST}>New Post</Link></Button>
+
+      <hr />
+      <h4>Current Posts</h4>
+      <PostTable />
   </div>
 );
 
