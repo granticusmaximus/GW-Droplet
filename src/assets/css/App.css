@@ -30,6 +30,10 @@ html * {
   z-index: -1;
 }
 
+tbody {
+  border-bottom: 3px solid #04C2C9;
+}
+
 .portfolioCard {
   border: 1px solid grey;
   border-radius: 4px;

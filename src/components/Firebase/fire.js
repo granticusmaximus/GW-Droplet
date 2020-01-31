@@ -14,7 +14,6 @@ const config = {
 };
 
 let firebaseCache;
-
 export const fire = () => {
   if (firebaseCache) {
     return firebaseCache;
