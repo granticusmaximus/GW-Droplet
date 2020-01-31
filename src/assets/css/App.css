@@ -34,6 +34,27 @@ tbody {
   border-bottom: 3px solid #04C2C9;
 }
 
+blockquote {
+  padding: 0 1em;
+  background-color: #333;
+  color: white;
+  border-left: .25em solid #6a737d;
+}
+
+codeDisplay {
+  background-color: #1B242F;
+  color: white;
+  display: block;
+}
+
+hightlight {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+}
+
 .portfolioCard {
   border: 1px solid grey;
   border-radius: 4px;
