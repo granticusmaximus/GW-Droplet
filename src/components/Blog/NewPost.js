@@ -20,6 +20,7 @@ const inputStyles = {
 const NewPost = ({ history }) => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
+  const [author, setAuthor] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [coverImageAlt, setCoverImageAlt] = useState("");
   const [content, setContent] = useState("");
@@ -53,6 +54,7 @@ const NewPost = ({ history }) => {
       dateFormatted: date.formatted,
       datePretty: date.pretty,
       slug,
+      author,
       coverImage,
       coverImageAlt,
       content
@@ -92,6 +94,19 @@ const NewPost = ({ history }) => {
           value={slug}
           onChange={({ target: { value } }) => {
             setSlug(value);
+          }}
+        />
+
+        <label style={labelStyles} htmlFor="author-field">
+          Author
+        </label>
+        <input
+          style={inputStyles}
+          id="author-field"
+          type="text"
+          value={author}
+          onChange={({ target: { value } }) => {
+            setAuthor(value);
           }}
         />
 
