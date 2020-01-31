@@ -45,6 +45,8 @@ const Post = ({ match }) => {
         <h1 className='pageHeader'>{currentPost.title}</h1>
         <center><img src={currentPost.coverImage} alt={currentPost.coverImageAlt} className='postImg'/></center>
         <em>{currentPost.datePretty}</em>
+        <br/>
+        <em>{currentPost.author}</em>
         <p dangerouslySetInnerHTML={{ __html: currentPost.content }}></p>
       </div>
     </div>
