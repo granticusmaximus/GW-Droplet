@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { CommonLoading } from 'react-loadingg';
 import { fire } from "../Firebase/fire";
-import { Redirect } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 

@@ -64,7 +64,7 @@ const NewPost = ({ history }) => {
       .ref()
       .child(`posts/${slug}`)
       .set(newPost)
-      .then(() => history.push(`/`));
+      .then(() => history.push(`/admin`));
   };
 
   return (

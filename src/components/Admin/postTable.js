@@ -5,7 +5,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { Table, Button } from 'reactstrap';
 import * as ROUTES from '../../constants/routes';
 
-const PostTable = ({ history }) => {
+const PostTable = () => {
   const [loading, setLoading] = useState(true);
   const [blogPosts, setBlogPosts] = useState([]);
   if (loading && !blogPosts.length) {
@@ -20,6 +20,7 @@ const PostTable = ({ history }) => {
         for (let slug in snapshotVal) {
           posts.push(snapshotVal[slug]);
         }
+        
 
         const newestFirst = posts.reverse();
         setBlogPosts(newestFirst);
@@ -27,13 +28,13 @@ const PostTable = ({ history }) => {
       });
   }
 
-  const deletePost = () => {
-    fire()
-      .database()
-      .ref()
-      .child(`posts/${blogPosts.slug}`)
-      .remove()
-  };
+  
+
+  const removeData = () => {
+    const postsRef = fire().database().ref().child(`posts/${blogPosts.uid}`)
+    postsRef.child(`${blogPosts.slug}`).remove();
+  }
+  
 
   if (loading) {
     return <div className="container"><center>
@@ -49,28 +50,28 @@ const PostTable = ({ history }) => {
   }
   else {
     return (
-          <Table dark hover>
-            <thead>
-              <tr>
-                <th>Post Title</th>
-                <th>Date Posted</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {blogPosts.map(blogPost => (
-                <tr>
-                  <td>{blogPost.title}</td>
-                  <td>{blogPost.datePretty}</td>
-                  <td>
-                    <Button outline color="danger" onClick={deletePost}>Delete</Button>{' '}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        );
-      }
+      <Table dark hover>
+        <thead>
+          <tr>
+            <th>Post Title</th>
+            <th>Date Posted</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {blogPosts.map(blogPost => (
+            <tr>
+              <td>{blogPost.title}</td>
+              <td>{blogPost.datePretty}</td>
+              <td>
+                <Button outline color="danger" onClick={() => removeData(blogPosts.title, blogPosts.datePretty, blogPosts.author, blogPosts.content)} className="btn btn-link">Delete</Button>{' '}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    );
+  }
 }
 
-  export default PostTable;
+export default PostTable;
