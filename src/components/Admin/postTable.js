@@ -1,39 +1,78 @@
-import React from 'react';
+import React, { useState } from "react";
+import { fire } from "../Firebase/fire";
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { Table, Button } from 'reactstrap';
+import * as ROUTES from '../../constants/routes';
 
-const PostTable = (props) => {
-  return (
-    <Table hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
+const PostTable = ({ history }) => {
+  const [loading, setLoading] = useState(true);
+  const [blogPosts, setBlogPosts] = useState([]);
+  if (loading && !blogPosts.length) {
+    fire()
+      .database()
+      .ref("/posts")
+      .orderByChild("date")
+      .once("value")
+      .then(snapshot => {
+        let posts = [];
+        const snapshotVal = snapshot.val();
+        for (let slug in snapshotVal) {
+          posts.push(snapshotVal[slug]);
+        }
+
+        const newestFirst = posts.reverse();
+        setBlogPosts(newestFirst);
+        setLoading(false);
+      });
+  }
+
+  const deletePost = () => {
+    const slug = blogPosts.slug;
+    fire()
+      .database()
+      .ref()
+      .child(`posts/${slug}`)
+      .remove()
+      .then(() => history.push(`/admin`));
+  };
+
+  if (loading) {
+    return <div className="container"><center>
+      <Loader
+        type="Grid"
+        color="#04C2C9"
+        height={100}
+        width={100}
+        timeout={3000} //3 secs
+
+      />
+    </center></div>;
+  }
+  else {
+    return (
+          <Table dark hover>
+            <thead>
+              <tr>
+                <th>Post Title</th>
+                <th>Date Posted</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {blogPosts.map(blogPost => (
+                <tr>
+                  <td>{blogPost.title}</td>
+                  <td>{blogPost.datePretty}</td>
+                  <td>
+                    <Button outline color="danger" onClick={deletePost}>Delete</Button>{' '}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        );
+      }
 }
 
-export default PostTable;
+  export default PostTable;

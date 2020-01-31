@@ -14,7 +14,7 @@ const config = {
 };
 
 let firebaseCache;
-
+export const auth = firebase.auth();
 export const fire = () => {
   if (firebaseCache) {
     return firebaseCache;
