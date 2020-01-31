@@ -1,6 +1,8 @@
 import React, { Component, useState } from "react";
 import { fire } from "../Firebase/fire";
 import { Link } from "react-router-dom";
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 const BlogPage = () => {
   const [loading, setLoading] = useState(true);
@@ -26,7 +28,16 @@ const BlogPage = () => {
   }
 
   if (loading) {
-    return <h1 className="container">Loading... </h1>;
+    return <div className="container"><center>
+      <Loader
+         type="Grid"
+         color="#04C2C9"
+         height={100}
+         width={100}
+         timeout={3000} //3 secs
+
+      />
+    </center></div>;
   }
   else {
     return (

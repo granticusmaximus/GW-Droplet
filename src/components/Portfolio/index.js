@@ -34,6 +34,7 @@ class PortolioPage extends Component {
                       service={project.service}
                       imageSrc={project.imageSrc}
                       tech={project.tech}
+                      url={project.url}
                     ></ProjectCard>
                   </div>
               ))}
