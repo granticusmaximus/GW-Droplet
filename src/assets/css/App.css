@@ -41,10 +41,30 @@ blockquote {
   border-left: .25em solid #6a737d;
 }
 
-codeDisplay {
-  background-color: #1B242F;
-  color: white;
-  display: block;
+pre {
+  background-color: #D1D1D0;
+  overflow: auto;
+  font-family: 'Monaco', monospace;
+  padding: 0 1em;
+}
+
+
+code {
+  font-family: Monaco, monospace;
+  line-height: 100%;
+  background-color: #eee;
+  padding: 0.2em;
+  letter-spacing: -0.05em;
+  word-break: normal;
+  border-radius: 5px;
+}
+
+pre code {
+  border: none;
+  background: none;
+  line-height: 1em;
+  letter-spacing: normal;
+  word-break: break-all;
 }
 
 hightlight {
