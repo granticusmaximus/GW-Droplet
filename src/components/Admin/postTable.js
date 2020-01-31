@@ -28,13 +28,11 @@ const PostTable = ({ history }) => {
   }
 
   const deletePost = () => {
-    const slug = blogPosts.slug;
     fire()
       .database()
       .ref()
-      .child(`posts/${slug}`)
+      .child(`posts/${blogPosts.slug}`)
       .remove()
-      .then(() => history.push(`/admin`));
   };
 
   if (loading) {
