@@ -41,7 +41,7 @@ blockquote {
   border-left: .25em solid #6a737d;
 }
 
-pre {
+.pre {
   background-color: #D1D1D0;
   overflow: auto;
   font-family: 'Monaco', monospace;
@@ -49,7 +49,7 @@ pre {
 }
 
 
-code {
+.code {
   font-family: Monaco, monospace;
   line-height: 100%;
   background-color: #eee;
@@ -59,7 +59,7 @@ code {
   border-radius: 5px;
 }
 
-pre code {
+.pre .code {
   border: none;
   background: none;
   line-height: 1em;

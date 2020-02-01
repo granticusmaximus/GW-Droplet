@@ -45,6 +45,7 @@ const Post = ({ match }) => {
         <em>{currentPost.datePretty}</em>
         <br/>
         <em>{currentPost.author}</em>
+        <hr/>
         <p dangerouslySetInnerHTML={{ __html: currentPost.content }}></p>
       </div>
     </div>
