@@ -10,7 +10,7 @@ const Admin = () => (
     <hr />
     <h4>Quick Actions</h4>
     <hr />
-    <Button outline color="primary"><Link to={ROUTES.NEW_POST}>New Post</Link></Button>
+    <Button outline color="primary"><Link to={ROUTES.NEW_POST}>New Post</Link></Button>{' '}
 
       <hr />
       <h4>Current Posts</h4>
