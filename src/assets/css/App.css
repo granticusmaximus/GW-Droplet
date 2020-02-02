@@ -11,6 +11,18 @@ html * {
   z-index: 99;
 }
 
+.readMore {
+  border: 1px solid grey;
+  border-radius: 4px;
+  color: white;
+  background-color: #1B242F;
+  border-bottom: 3px solid #04C2C9;
+  margin-top: 24px;
+  height:auto;
+  padding: 10px;
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
 .navImg {
   width: 50px;
   height: 50px;
@@ -41,31 +53,27 @@ blockquote {
   border-left: .25em solid #6a737d;
 }
 
-.pre {
-  background-color: #D1D1D0;
-  overflow: auto;
-  font-family: 'Monaco', monospace;
-  padding: 0 1em;
+code {
+  border: solid 2px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  margin: 0 0.25rem;
+  padding: 0.25rem 0.65rem;
 }
 
-
-.code {
-  font-family: Monaco, monospace;
-  line-height: 100%;
-  background-color: #eee;
-  padding: 0.2em;
-  letter-spacing: -0.05em;
-  word-break: normal;
-  border-radius: 5px;
+pre {
+  -webkit-overflow-scrolling: touch;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  margin: 0 0 2rem 0;
 }
 
-.pre .code {
-  border: none;
-  background: none;
-  line-height: 1em;
-  letter-spacing: normal;
-  word-break: break-all;
-}
+  pre code {
+    display: block;
+    line-height: 1.75;
+    padding: 1rem 1.5rem;
+    overflow-x: auto;
+  }
 
 hightlight {
   padding: .2em .4em;

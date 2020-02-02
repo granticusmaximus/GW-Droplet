@@ -1,36 +1,13 @@
 export default
     {
-        //(Please Do Not Remove The comma(,) after every variable)
-        //Change The Website Template
-        name: 'Grant Watson.',
-        headerTagline: [//Line 1 For Header
-            'Hi 👋 You found me! I am Grant Watson.',
-            //Line 2 For Header
-            'Software Engineer ',
-            //Line 3 For Header
-            'from Denver, CO'
-        ],
-        //Contact Email
-        contactEmail: 'gwatson117@gmail.com',
-        // Add Your About Text Here
-        abouttext: "I am a software engineer, and if you are needing work done, please contact me at gwatson117@gmail.com or call at 478-733-5239",
-        aboutImage: 'https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
         //Change This To Hide The Image of About Section (True Or False)
         ShowAboutImage: true,//true or false (Change Here)
         info: [
             {
-                name: 'Grant Watson.',
-                headerTagline: [//Line 1 For Header
-                    'Hi 👋 You found me! I am Grant Watson.',
-                    //Line 2 For Header
-                    'Software Engineer ',
-                    //Line 3 For Header
-                    'from Denver, CO',
-                ],
                 contactEmail: 'gwatson117@gmail.com',
                 contactPhone: '(478) 744-5239',
                 // Add Your About Text Here
-                abouttext: "Hi 👋 You found me! I am Grant Watson, a software engineer from Denver, CO, and if you are needing work done, please contact me today at either gwatson117@gmail.com or (478)733-5239!",
+                abouttext: "Hi 👋 You found my current work! I am Grant Watson, a software engineer from Denver, CO, and if you are needing work done, please contact me today at either gwatson117@gmail.com or (478)733-5239!",
                 aboutImage: 'https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
                 //Change This To Hide The Image of About Section (True Or False)
             }
@@ -101,6 +78,14 @@ export default
                 imageSrc: "https://i.imgur.com/tZwInCZ.jpg",
                 tech: 'Backend was PHP/ Frontend tech used was HTML, jQuery, CSS, React',
                 url: 'https://www.globalu.com/'
+            },
+            {
+                id: 9,//DO NOT CHANGE THIS (Please)😅
+                title: 'Project 9',
+                service: 'A blogging system built in React',
+                imageSrc: "https://i.imgur.com/r52fN0N.png",
+                tech: 'Tech Used: ReactJS and Firebase',
+                url: 'https://react-blog-system.netlify.com/'
             }
 
 

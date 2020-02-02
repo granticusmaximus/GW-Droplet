@@ -20,7 +20,7 @@ const BlogPage = () => {
         for (let slug in snapshotVal) {
           posts.push(snapshotVal[slug]);
         }
-
+        
         const newestFirst = posts.reverse();
         setBlogPosts(newestFirst);
         setLoading(false);

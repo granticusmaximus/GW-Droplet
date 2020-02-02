@@ -39,6 +39,7 @@ class PortolioPage extends Component {
                   </div>
               ))}
             </div>
+            
         </div>
       </div>
     );
