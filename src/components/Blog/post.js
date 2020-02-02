@@ -38,7 +38,7 @@ const Post = ({ match }) => {
   else {
   return (
     <div>
-
+      
       <div className='container'>
         <h1 className='pageHeader'>{currentPost.title}</h1>
         <center><img src={currentPost.coverImage} alt={currentPost.coverImageAlt} className='postImg'/></center>

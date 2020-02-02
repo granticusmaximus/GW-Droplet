@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
+import { Button } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 class ProjectCard extends Component {
     state = {}
@@ -16,7 +18,8 @@ class ProjectCard extends Component {
                         <div>{this.props.tech}</div>
                     </div>
                     <div className='portfolioCard-action'>
-                        <span>{this.props.url}</span>
+                        <Button outline color="primary"><a href={this.props.url} target="_blank">Demo</a></Button>
+                        <span></span>
                     </div>
                 </div>
             </Fade>);
