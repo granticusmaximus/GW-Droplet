@@ -55,7 +55,6 @@ const PostTable = () => {
           <tr>
             <th>Post Title</th>
             <th>Date Posted</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -63,9 +62,6 @@ const PostTable = () => {
             <tr>
               <td>{blogPost.title}</td>
               <td>{blogPost.datePretty}</td>
-              <td>
-                <Button outline color="danger" onClick={() => removeData(blogPosts.title, blogPosts.datePretty, blogPosts.author, blogPosts.content)} className="btn btn-link">Delete</Button>{' '}
-              </td>
             </tr>
           ))}
         </tbody>
