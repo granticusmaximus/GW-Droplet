@@ -36,13 +36,10 @@ const NewPost = ({ history }) => {
       month = `0${month}`;
     }
 
-    const day = now.getDate();
-    if (day < 10) {
-      day = `0${day}`;
-    }
+    
 
     return {
-      formatted: `${year}-${month}-${day}`,
+      formatted: `${year}-${month}`,
       pretty: now.toLocaleDateString("en-US", options)
     };
   };
