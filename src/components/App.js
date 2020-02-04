@@ -15,11 +15,17 @@ import Admin from './Admin';
 import PortfolioPage from './Portfolio';
 import Post from './Blog/post';
 import NewPost from './Blog/NewPost';
+import { Helmet } from 'react-helmet'
+
+const TITLE = 'GW Software'
 
 const App = () => (
   <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
     <PartialNav />
     <div className="container-body">
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <Box my={5}>
         <div>
           <Route exact path={ROUTES.HOME} component={MainHome} />

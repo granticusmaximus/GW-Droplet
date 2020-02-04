@@ -3,12 +3,18 @@ import Fade from 'react-reveal/Fade';
 import data from './data';
 import Info from './Info';
 import ProjectCard from "./ProjectCard";
+import { Helmet } from 'react-helmet'
+
+const TITLE = 'Portforlio | GWS'
 
 class PortolioPage extends Component {
   state = {}
   render() {
     return (
       <div className="container">
+        <Helmet>
+          <title>{ TITLE }</title>
+        </Helmet>
         <div>
           <h4 className='heading'>
             <Fade bottom cascade>
