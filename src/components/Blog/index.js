@@ -52,12 +52,13 @@ const BlogPage = () => {
                   {blogPost.title} &mdash;{" "}
                   <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>
                 </h2>
+                <hr />
                 <p
                   dangerouslySetInnerHTML={{
-                    __html: `${blogPost.content.substring(0, 200)}...`
+                    __html: `${blogPost.content.substring(0, 350)}...`
                   }}
                 ></p>
-                <Link to={`/posts/${blogPost.slug}`}>Continue reading...</Link>
+                  <Link to={`/posts/${blogPost.slug}`}>Continue reading</Link>
               </div>
             </section>
           ))}

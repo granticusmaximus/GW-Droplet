@@ -84,9 +84,8 @@ hightlight {
 }
 
 .portfolioCard {
-  border: 1px solid grey;
   border-radius: 4px;
-  background-color: #1B242F;
+  background-color: white;
   border-bottom: 3px solid #04C2C9;
   margin-top: 24px;
   height:auto;
@@ -94,7 +93,7 @@ hightlight {
 }
 
 .portfolioCard-header{
-  color: white;
+  color: #1B242F;
   font-size: 150%;
   background-color: inherit;
   border-bottom: 1px solid rgba(160,160,160,0.2);
@@ -103,7 +102,7 @@ hightlight {
 }
 
 .portfolioCard:hover {
-  border: 2px solid black;
+  border: 3px solid #04C2C9;
 }
 
 .portfolioCard img {
@@ -112,7 +111,7 @@ hightlight {
 
 .portfolioCard-content {
   padding: 16px;
-  color: white;
+  color: #1B242F;
   height:auto;
 }
 
@@ -131,7 +130,6 @@ hightlight {
 }
 
 .blogCard {
-  border: 1px solid grey;
   border-radius: 4px;
   margin-top: 24px;
   box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
@@ -140,6 +138,8 @@ hightlight {
 
 .blogCard img {
   width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .blogCard-content {
