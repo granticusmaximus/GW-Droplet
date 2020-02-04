@@ -5,7 +5,9 @@ import { Button } from "reactstrap";
 import Fade from 'react-reveal/Fade';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
 
+const TITLE = 'My Experience | GWS'
 
 class ExperiencePage extends Component {
   render() {
@@ -31,6 +33,9 @@ class ExperiencePage extends Component {
     return (
       <Fade bottom cascade>
         <div className="container">
+          <Helmet>
+            <title>{TITLE}</title>
+          </Helmet>
           <div className="pageHeader">
             Current Skills
         </div>
