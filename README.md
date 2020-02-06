@@ -8,3 +8,4 @@ The main techs are:
 * Firebase
 
 My main focus is to work on adding and rendering blog posts properly now. If you have stumbled upon this repo, and consider helping me out, branch and consider doing a pull request. Thanks!
+
