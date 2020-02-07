@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { fire } from "../Firebase/fire";
+import { Editor } from "draft-js";
 
 const labelStyles = {
   display: "block",
@@ -132,6 +133,7 @@ const NewPost = ({ history }) => {
             setCoverImageAlt(value);
           }}
         />
+
 
         <label style={labelStyles} htmlFor="content-field">
           Content
