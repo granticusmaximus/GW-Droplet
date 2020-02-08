@@ -35,6 +35,8 @@ class ExperiencePage extends Component {
         <div className="container">
           <Helmet>
             <title>{TITLE}</title>
+            <meta name="description" content="This is the visual resume of Grant Watson. You find the confidence levels of programming languages I use, my job history, and full resume." />
+            <link rel="canonical" href="https://www.grantwatson.app/experience" />
           </Helmet>
           <div className="pageHeader">
             Current Skills
