@@ -14,6 +14,9 @@ class PortolioPage extends Component {
       <div className="container">
         <Helmet>
           <title>{ TITLE }</title>
+          <meta name="description" content="This is the portfolio page of Grant Watson. You will find my recent projects here" />
+          <link rel="canonical" href="https://www.grantwatson.app/portfolio" />
+          <meta name="keywords" content="reactjs apps, c# apps, themes, wordpress themes, reactjs themes, asp.net themes " />
         </Helmet>
         <div>
           <h4 className='heading'>
