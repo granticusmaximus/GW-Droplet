@@ -1,5 +1,5 @@
 import React, { Component } from "./node_modules/react";
-import { fire } from "../Firebase/fire";
+import { Firebase } from "../Firebase";
 import { Form, FormGroup, Input, Button } from "./node_modules/reactstrap";
 
 class SignUp extends Component {
@@ -14,7 +14,7 @@ class SignUp extends Component {
   }
 
   _userSignUp = e => {
-    fire
+    Firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .catch(error => {

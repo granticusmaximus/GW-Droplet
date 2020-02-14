@@ -10,3 +10,4 @@ export const EXPERIENCE = '/experience';
 export const RESUME = '/my-resume';
 export const PORTFOLIO = '/portfolio';
 export const NEW_IMAGE = '/new-image';
+export const CONTACT = '/contact';

@@ -50,24 +50,28 @@ const BlogPage = () => {
         </Helmet>
         <div className="container">
           <h1 className="pageHeader">Blog posts</h1>
-          {blogPosts.map(blogPost => (
-            <section key={blogPost.slug} className="blogCard">
-              <img src={blogPost.coverImage} alt={blogPost.coverImageAlt} />
-              <div className="blogCard-content">
-                <h2>
-                  {blogPost.title} &mdash;{" "}
-                  <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>
-                </h2>
-                <hr />
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: `${blogPost.content.substring(0, 350)}...`
-                  }}
-                ></p>
-                <Link to={`/posts/${blogPost.slug}`}>Continue reading</Link>
+          <div className="row">
+            {blogPosts.map(blogPost => (
+              <div className="col-md-4">
+                <section key={blogPost.slug} className="blogCard">
+                  <img src={blogPost.coverImage} alt={blogPost.coverImageAlt} />
+                  <div className="blogCard-content">
+                    <h2>
+                      {blogPost.title} &mdash;{" "}
+                      <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>
+                    </h2>
+                    <hr />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: `${blogPost.content.substring(0, 350)}...`
+                      }}
+                    ></p>
+                    <Link to={`/posts/${blogPost.slug}`}>Continue reading</Link>
+                  </div>
+                </section>
               </div>
-            </section>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );

@@ -16,6 +16,7 @@ import PortfolioPage from './Portfolio';
 import Post from './Blog/post';
 import NewPost from './Blog/NewPost';
 import { Helmet } from 'react-helmet'
+import Contact from './Contact';
 
 const TITLE = 'GW Software'
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route exact path={ROUTES.PORTFOLIO} component={PortfolioPage} />
           <Route exact path={ROUTES.NEW_POST} component={NewPost} />
           <Route exact path={ROUTES.POST} component={Post} />
+          <Route exact path={ROUTES.CONTACT} component={Contact} />
         </div>
       </Box>
     </div>
