@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 import { Helmet } from 'react-helmet'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import { Pagination } from "reactstrap";
 
 
 const TITLE = 'Blog | GWS'
 const BlogPage = () => {
   const [loading, setLoading] = useState(true);
   const [blogPosts, setBlogPosts] = useState([]);
+
 
   if (loading && !blogPosts.length) {
     fire()
