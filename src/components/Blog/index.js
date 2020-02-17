@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 import { Helmet } from 'react-helmet'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import { Pagination } from "reactstrap";
 
 
 const TITLE = 'Blog | GWS'
