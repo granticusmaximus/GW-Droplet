@@ -1,5 +1,5 @@
 # Purpose:
-The code base provided here is for my site that can be found [here](www.grantwatson.app) 
+The code base provided here is for my site that can be found [here](https://www.grantwatson.app) 
 
 The main techs are:
 
