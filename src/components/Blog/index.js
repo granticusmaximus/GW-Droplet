@@ -30,6 +30,7 @@ const BlogPage = () => {
         setLoading(false);
       });
   }
+  
 
   if (loading) {
     return <div className="container"><center>
@@ -62,12 +63,8 @@ const BlogPage = () => {
                       <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>
                     </h2>
                     <hr />
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: `${blogPost.content.substring(0, 350)}...`
-                      }}
-                    ></p>
-                    <Link to={`/posts/${blogPost.slug}`}>Continue reading</Link>
+                    
+                    <Link to={`/posts/${blogPost.slug}`}>Read Post</Link>
                   </div>
                 </section>
               </div>

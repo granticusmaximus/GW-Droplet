@@ -1,117 +1,98 @@
-/* eslint no-console:0 */
-import React from 'react';
-import range from 'lodash/range';
-import cumberbatch from 'cumberbatch-name';
-import { fire } from "../Firebase/fire";
+import React, { Component, useState  } from 'react';
+import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
-import Loader from 'react-loader-spinner'
-import { Helmet } from 'react-helmet'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Pagination from '../Pagination/Pagination';
+import FirebaseContext from "../Firebase/context";
 
-export default class App extends React.Component {
+export default class BlogList extends Component {
+
   constructor(props) {
     super(props);
-
-    const amount = 10000;
-
     this.state = {
-      data: generateNames(amount),
-      pagination: {
-        page: 1,
-        perPage: 10,
-      },
-    };
-
-    this.selectPage = this.selectPage.bind(this);
-    this.goToLastPage = this.goToLastPage.bind(this);
-    this.onPerPage = this.onPerPage.bind(this);
+      dbItems: [],
+      currentPage: 1,
+      itemsPerPage: 6,
+      totalItemCount: 1,
+      activePage: 15
+    }
+    
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
-  render() {
-    const data = this.state.data || [];
-    const pagination = this.state.pagination || {};
-    const paginated = paginate(data, pagination);
-    const pages = Math.ceil(data.length / Math.max(
-      isNaN(pagination.perPage) ? 1 : pagination.perPage, 1)
-    );
 
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({ activePage: pageNumber });
+  }
+
+  async getItems() {
+    const [loading, setLoading] = useState(true);
+    const [blogPosts, setBlogPosts] = useState([]);
+    const { currentPage, itemsPerPage } = this.state;
+    const startAt = currentPage * itemsPerPage - itemsPerPage;
+    const usersQuery = FirebaseContext.datbase().ref('/post').orderByChold("date").once("value").then(snapshot => {
+      let posts = [];
+      const snapshotVal = snapshot.val();
+      for (let slug in snapshotVal) {
+        posts.push(snapshotVal[slug]);
+      }
+
+      const newestFirst = posts.reverse();
+      setBlogPosts(newestFirst);
+      setLoading(false);
+    }).startAt(startAt).limit(itemsPerPage)
+    const snapshot = await usersQuery.get()
+    const items = snapshot.docs.map(doc => doc.data())
+    return this.setState({
+      dbItems: items,
+      totalItemCount: FirebaseContext.database().ref('/posts').orderByChild("date").get().then(res => console.log(res.size))
+    })
+
+  }
+
+  componentDidMount() {
+    this.getItems()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const isDifferentPage = this.state.currentPage !== prevState.currentPage
+    if (isDifferentPage) this.getItems()
+  }
+
+  render() {
     return (
       <div>
-
-        <div className='per-page-container'>
-          Per page <input type='number' min='1' defaultValue={pagination.perPage} onChange={this.onPerPage} />
-
-          <a className='go-to-last-page' href="#" onClick={this.goToLastPage}>Go to the last page</a>
-        </div>
-
-        {/* You can wrap the paginator to a custom component of its own. */}
-        <Pagination pagination={pagination} pages={pages} onSelect={this.selectPage} />
-
-        <div className='data'>
-          <h3>Comics</h3>
-
-          <ul>{paginated.data.map((comic, i) =>
-              <li key={'comic-' + i}>{comic.name}</li>
-          )}</ul>
-        </div>
-
-        <Pagination pagination={pagination} pages={pages} ellipsis="***"
-          labels={{previous: 'Previous one', next: 'Next one'}}
-          onSelect={this.selectPage} />
+        {this.state.dbItems.map((blogPost, index) => {
+          return (
+            <p key={index}>
+              <div className="col-md-4">
+                <section key={blogPost.slug} className="blogCard">
+                  <img src={blogPost.coverImage} alt={blogPost.coverImageAlt} />
+                  <div className="blogCard-content">
+                    <h2>
+                      {blogPost.title} &mdash;{" "}
+                      <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>
+                    </h2>
+                    <hr />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: `${blogPost.content.substring(0, 350)}...`
+                      }}
+                    ></p>
+                    <Link to={`/posts/${blogPost.slug}`}>Continue reading</Link>
+                  </div>
+                </section>
+              </div>
+            </p>
+          )
+        })
+        }
+        <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={this.state.itemsPerPage}
+          totalItemsCount={this.state.totalItemCount}
+          pageRangeDisplayed={this.state.itemsPerPage}
+          onChange={this.handlePageChange}
+        />
       </div>
-    );
+    )
   }
-  goToLastPage() {
-    const state = this.state;
-    const pagination = state.pagination || {};
-    const pages = Math.ceil(state.data.length / pagination.perPage);
-
-    this.selectPage(pages);
-  }
-  selectPage(page) {
-    const state = this.state;
-    const pagination = state.pagination || {};
-    const pages = Math.ceil(state.data.length / pagination.perPage);
-
-    pagination.page = Math.min(Math.max(page, 1), pages);
-
-    this.setState({
-      pagination: pagination
-    });
-  }
-  onPerPage(event) {
-    var pagination = this.state.pagination || {};
-
-    pagination.perPage = parseInt(event.target.value, 10);
-
-    this.setState({
-      pagination: pagination
-    });
-  }
-}
-
-// TODO: push to a package?
-function paginate(data, o) {
-  data = data || [];
-
-  // adapt to zero indexed logic
-  var page = o.page - 1 || 0;
-  var perPage = o.perPage;
-
-  var amountOfPages = Math.ceil(data.length / perPage);
-  var startPage = page < amountOfPages? page: 0;
-
-  return {
-    amount: amountOfPages,
-    data: data.slice(startPage * perPage, startPage * perPage + perPage),
-    page: startPage + 1
-  };
-}
-
-function generateNames(amount) {
-  return range(amount).map(() => {
-    return {
-      name: cumberbatch()
-    };
-  });
 }
