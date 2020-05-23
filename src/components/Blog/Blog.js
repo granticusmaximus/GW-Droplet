@@ -1,98 +1,125 @@
-import React, { Component, useState  } from 'react';
-import Pagination from "react-js-pagination";
-import { Link } from "react-router-dom";
-import FirebaseContext from "../Firebase/context";
+import React, { Component } from 'react'
+import { withFirebase } from './Firebase'
+import Post from './post'
 
-export default class BlogList extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      dbItems: [],
-      currentPage: 1,
-      itemsPerPage: 6,
-      totalItemCount: 1,
-      activePage: 15
-    }
-    
-    this.handlePageChange = this.handlePageChange.bind(this);
-  }
-
-  handlePageChange(pageNumber) {
-    console.log(`active page is ${pageNumber}`);
-    this.setState({ activePage: pageNumber });
-  }
-
-  async getItems() {
-    const [loading, setLoading] = useState(true);
-    const [blogPosts, setBlogPosts] = useState([]);
-    const { currentPage, itemsPerPage } = this.state;
-    const startAt = currentPage * itemsPerPage - itemsPerPage;
-    const usersQuery = FirebaseContext.datbase().ref('/post').orderByChold("date").once("value").then(snapshot => {
-      let posts = [];
-      const snapshotVal = snapshot.val();
-      for (let slug in snapshotVal) {
-        posts.push(snapshotVal[slug]);
-      }
-
-      const newestFirst = posts.reverse();
-      setBlogPosts(newestFirst);
-      setLoading(false);
-    }).startAt(startAt).limit(itemsPerPage)
-    const snapshot = await usersQuery.get()
-    const items = snapshot.docs.map(doc => doc.data())
-    return this.setState({
-      dbItems: items,
-      totalItemCount: FirebaseContext.database().ref('/posts').orderByChild("date").get().then(res => console.log(res.size))
-    })
-
-  }
-
-  componentDidMount() {
-    this.getItems()
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const isDifferentPage = this.state.currentPage !== prevState.currentPage
-    if (isDifferentPage) this.getItems()
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.dbItems.map((blogPost, index) => {
-          return (
-            <p key={index}>
-              <div className="col-md-4">
-                <section key={blogPost.slug} className="blogCard">
-                  <img src={blogPost.coverImage} alt={blogPost.coverImageAlt} />
-                  <div className="blogCard-content">
-                    <h2>
-                      {blogPost.title} &mdash;{" "}
-                      <span style={{ color: "#5e5e5e" }}>{blogPost.datePretty}</span>
-                    </h2>
-                    <hr />
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: `${blogPost.content.substring(0, 350)}...`
-                      }}
-                    ></p>
-                    <Link to={`/posts/${blogPost.slug}`}>Continue reading</Link>
-                  </div>
-                </section>
-              </div>
-            </p>
-          )
-        })
+class PostList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading:false,
+            posts:[],
+            post_id:[],
+            lastVisible:null,
+            limit:2
         }
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={this.state.itemsPerPage}
-          totalItemsCount={this.state.totalItemCount}
-          pageRangeDisplayed={this.state.itemsPerPage}
-          onChange={this.handlePageChange}
-        />
-      </div>
-    )
-  }
+
+        this.handlePageNext = this.handlePageNext.bind(this);
+    }
+    componentDidMount() {
+        let newPosts=[];
+        let postsId=[];
+
+        this.setState({ loading: true });
+
+        this.props.firebase.posts()
+        .orderBy('date', 'desc')
+        .limit(2)
+        .get().then(querySnapshot => {
+            let lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+            this.setState({ lastVisible: lastVisible});
+
+            querySnapshot.forEach(doc => {
+                newPosts = newPosts.concat(doc.data());
+                postsId = postsId.concat(doc.id);           
+                this.setState({
+                    posts:newPosts,
+                    post_id:postsId,
+                    loading:false
+                });
+            })
+        })
+
+
+
+    }
+
+    handlePageNext() {
+        let newPosts=[];
+        let postsId=[];
+
+        this.setState({ loading: true });
+
+        this.props.firebase.posts()
+        .orderBy('date', 'desc')
+        .startAt(this.state.lastVisible)
+        .limit(this.state.limit)
+        .get().then(querySnapshot => {
+            let lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+
+            this.setState({ lastVisible:lastVisible });
+            querySnapshot.forEach(doc => {
+                newPosts = newPosts.concat(doc.data());
+                postsId = postsId.concat(doc.id);           
+                this.setState({
+                    posts:newPosts,
+                    post_id:postsId,
+                    loading:false
+                });
+            })
+        })
+    }
+
+    handlePagePrev() {
+        let newPosts=[];
+        let postsId=[];
+
+        this.setState({ loading: true });
+
+        this.props.firebase.posts()
+        .orderBy('date', 'desc')
+        .startAt(this.state.lastVisible)
+        .limit(this.state.limit)
+        .get().then(querySnapshot => {
+            let lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+
+            this.setState({ lastVisible:lastVisible});
+            querySnapshot.forEach(doc => {
+                newPosts = newPosts.concat(doc.data());
+                postsId = postsId.concat(doc.id);           
+                this.setState({
+                    posts:newPosts,
+                    post_id:postsId,
+                    loading:false
+                });
+            })
+        })
+    }
+
+    render() {
+        return (
+            <div className='posts'>
+                <div className='row'>
+                    {this.state.posts.map((post, i) => (
+                        <Post 
+                            key={i}
+                            title={post.title}
+                            author={post.author}
+                            desc={post.desc}
+                            text={post.text}
+                            id={this.state.post_id[i]}
+                            date={post.date}
+                            imgURL={post.imgURL}/>
+                    ))}
+
+                    {this.state.loading && <p>Loading...</p>}
+                    <button className='btn' onClick={() => this.handlePagePrev()}>&larr;</button>
+                    <button className='btn' onClick={() => this.handlePageNext()}>></button>
+
+                </div>
+
+            </div>
+        )
+    }
 }
+
+export default withFirebase(PostList);

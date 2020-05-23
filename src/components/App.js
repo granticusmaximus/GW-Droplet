@@ -17,7 +17,6 @@ import Post from './Blog/post';
 import NewPost from './Blog/NewPost';
 import { Helmet } from 'react-helmet'
 import Contact from './Contact';
-import BlogList from './Blog/Blog'
 
 const TITLE = 'GW Software'
 

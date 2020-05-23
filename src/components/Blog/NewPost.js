@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { fire } from "../Firebase/fire";
-import { Editor } from "draft-js";
+import { AuthUserContext } from '../Sessions';
+import error from '../../assets/img/lockchain.png'
 
 const labelStyles = {
   display: "block",
@@ -17,8 +18,25 @@ const inputStyles = {
   marginBottom: "1.5rem",
   padding: "0 0.25rem"
 };
+const NewPost = () => (
+  <div>
+    <AuthUserContext.Consumer>
+      {authUser =>
+        authUser ? <NewPostAuth /> : <NewPostNonAuth />
+      }
+    </AuthUserContext.Consumer>
+  </div>
 
-const NewPost = ({ history }) => {
+);
+
+const NewPostNonAuth = () => (
+  <>
+  <center><h1>Ooooops</h1></center>
+  <center><img src={error} alt={"No Access"} height="50%" width="50%" /> </center>
+  <center><p>Its seems you are trying to access something you are not suppose to</p></center>
+  </>
+)
+const NewPostAuth = ({ history }) => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [author, setAuthor] = useState("");
